@@ -24,11 +24,25 @@ const Navbar = () => {
 
         {!user ? (
           <>
-            <Link className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:opacity-90 transition cursor-pointer btn " to="/login">Login</Link>
-            <Link className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:opacity-90 transition cursor-pointer btn " to="/register">Register</Link>
+            <Link
+              className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:opacity-90 transition cursor-pointer btn "
+              to="/login">
+              Login
+            </Link>
+            <Link
+              className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:opacity-90 transition cursor-pointer btn "
+              to="/register">
+              Register
+            </Link>
           </>
         ) : (
-          <button className="bg-pink-500 px-3 py-1 rounded">Logout</button>
+          <>
+            <img src={user.photoURL} alt="" className="w-16 h-16" />
+
+            <button className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:opacity-90 transition cursor-pointer btn ">
+              Logout
+            </button>
+          </>
         )}
       </div>
     </nav>
