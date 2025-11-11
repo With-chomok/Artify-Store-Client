@@ -1,138 +1,36 @@
-import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
-// import { FaBars, FaTimes } from "react-icons/fa";
-import ThemeToggle from "./ThemeToggle";
-import { Link, NavLink } from "react-router";
-
-const Navbar = ({ user, handleLogout }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const navLinks = (
-    <>
-      <li>
-        <NavLink to="/" className="hover:text-accent-red transition">
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/explore" className="hover:text-accent-red transition">
-          Explore Artworks
-        </NavLink>
-      </li>
-      {user && (
-        <>
-          <li>
-            <NavLink to="/add-artwork" className="hover:text-accent-red transition">
-              Add Artwork
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/my-gallery" className="hover:text-accent-red transition">
-              My Gallery
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/favorites" className="hover:text-accent-red transition">
-              My Favorites
-            </NavLink>
-          </li>
-        </>
-      )}
-    </>
-  );
-
+const Navbar = () => {
+  const user = null;
   return (
-    <nav className="sticky top-0 z-50 bg-light-navbar dark:bg-dark-navbar backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        
-        <Link to="/" className="text-2xl font-extrabold text-accent-red">
-          Artify<span className="text-gray-800 dark:text-gray-200">.</span>
-        </Link>
+    <nav className="bg-gray-900 text-white px-6 py-3 flex justify-between items-center">
+      <Link to="/" className="text-2xl font-bold text-pink-400">
+        🎨 Artify
+      </Link>
 
-        
-        <ul className="hidden md:flex items-center gap-6 font-medium text-light-text-primary dark:text-dark-text-primary">
-          {navLinks}
-        </ul>
+      <div className="flex justify-center items-center gap-5">
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/explore">Explore</NavLink>
+        <NavLink to="/addart">Add Artwork</NavLink>
+        <NavLink to="/mygallery">My Gallery</NavLink>
+        <NavLink to="/myfavourite">My Favourite</NavLink>
 
-        
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
+        {user && (
+          <>
+            <NavLink to="/add-artwork">Add Artwork</NavLink>
+            <NavLink to="/my-gallery">My Gallery</NavLink>
+          </>
+        )}
 
-          {!user ? (
-            <div className="hidden md:flex gap-3">
-              <Link
-                to="/login"
-                className="px-4 py-2 rounded-xl border border-accent-red text-accent-red hover:bg-accent-red hover:text-white transition"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="px-4 py-2 rounded-xl bg-accent-red text-white hover:bg-accentHover transition"
-              >
-                Register
-              </Link>
-            </div>
-          ) : (
-            <div className="relative group">
-              <img
-                src={user.photoURL}
-                alt="user"
-                className="w-10 h-10 rounded-full border-2 border-accent-red cursor-pointer"
-              />
-              <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-dark-card shadow-lg rounded-xl p-3 hidden group-hover:block">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                  {user.displayName}
-                </p>
-                <button
-                  onClick={handleLogout}
-                  className="w-full text-left px-3 py-2 bg-accent-red text-white rounded-lg hover:bg-accentHover transition"
-                >
-                  Logout
-                </button>
-              </div>
-            </div>
-          )}
-
-          
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-2xl text-accent-red focus:outline-none"
-          >
-            
-          </button>
-        </div>
+        {!user ? (
+          <>
+            <Link className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:opacity-90 transition cursor-pointer btn " to="/login">Login</Link>
+            <Link className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:opacity-90 transition cursor-pointer btn " to="/register">Register</Link>
+          </>
+        ) : (
+          <button className="bg-pink-500 px-3 py-1 rounded">Logout</button>
+        )}
       </div>
-
-      
-      {menuOpen && (
-        <ul className="md:hidden flex flex-col items-center gap-4 pb-4 font-medium bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary border-t border-gray-200 dark:border-gray-800">
-          {navLinks}
-          {!user ? (
-            <>
-              <Link
-                to="/login"
-                className="px-4 py-2 rounded-xl border border-accent-red text-accent-red hover:bg-accent-red hover:text-white transition"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="px-4 py-2 rounded-xl bg-accent-red text-white hover:bg-accentHover transition"
-              >
-                Register
-              </Link>
-            </>
-          ) : (
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 bg-accent-red text-white rounded-xl hover:bg-accentHover transition"
-            >
-              Logout
-            </button>
-          )}
-        </ul>
-      )}
     </nav>
   );
 };
