@@ -1,15 +1,40 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { useLocation, useNavigate } from "react-router";
+import { Link, Navigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { signInUser, signInWithGoogle } = useContext(AuthContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     console.log("Logging in with:", email, password);
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        e.target.reset();
+        navigate("/");
+        toast.success("sign in successfull");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
-
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state || "/");
+        toast.success("sign in successfull");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
       <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-xl w-full max-w-md p-8 text-white">
@@ -22,8 +47,7 @@ const Login = () => {
               type="email"
               className="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300"
               placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
               required
             />
           </div>
@@ -34,13 +58,14 @@ const Login = () => {
               type="password"
               className="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300"
               placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
               required
             />
           </div>
 
-          <button className="btn w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold border-none mt-4  shadow-none">
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold border-none mt-4  shadow-none">
             <svg
               className="rounded-full"
               aria-label="Google logo"

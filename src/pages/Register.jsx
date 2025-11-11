@@ -1,23 +1,25 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { use } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { createUser, updateUserProfile, signInWithGoogle } = use(AuthContext);
   const navigate = useNavigate();
 
   const validatePassword = (password) => {
-    const hasUpper = /[A-Z]/.test(password);
-    const hasLower = /[a-z]/.test(password);
-    const hasLength = password.length >= 6;
-    return hasUpper && hasLower && hasLength;
+    const upperCase = /[A-Z]/.test(password);
+    const lowerCase = /[a-z]/.test(password);
+    const lengthPass = password.length >= 6;
+    return upperCase && lowerCase && lengthPass;
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
+    const displayName = e.target.name.value;
+    const photo = e.target.photo.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
     if (!validatePassword(password)) {
       toast.error(
@@ -26,13 +28,33 @@ const Register = () => {
       return;
     }
 
-    console.log({ name, photo, email, password });
-    toast.success("Registration Successful!");
-    setTimeout(() => navigate("/home"), 1500);
+    toast.loading("Creating user...", { id: "create-user" });
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        updateUserProfile(displayName, photo);
+        toast.success("User created successfully!", { id: "create-user" });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message, { id: "create-user" });
+      });
   };
 
-  const handleGoogleSignup = () => {
-    toast("Google signup feature coming soon!");
+  const handleGoogleSignIn = () => {
+    toast.loading("Creating user...", { id: "create-user" });
+    signInWithGoogle()
+      .then((result) => {
+        toast.success("User created successfully!", { id: "create-user" });
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message, { id: "create-user" });
+      });
   };
 
   return (
@@ -43,90 +65,79 @@ const Register = () => {
         </h2>
 
         <form onSubmit={handleRegister} className="space-y-5">
-          {/* Name */}
           <div>
-            <label className="block text-sm font-semibold mb-2">Full Name</label>
+            <label className="block text-sm font-semibold mb-2">
+              Full Name
+            </label>
             <input
               type="text"
               placeholder="Enter your name"
               className="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="name"
               required
             />
           </div>
 
-          {/* Photo URL */}
           <div>
-            <label className="block text-sm font-semibold mb-2">Photo URL</label>
+            <label className="block text-sm font-semibold mb-2">
+              Photo URL
+            </label>
             <input
               type="text"
               placeholder="Enter photo URL"
               className="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300"
-              value={photo}
-              onChange={(e) => setPhoto(e.target.value)}
+              name="photo"
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-sm font-semibold mb-2">Email</label>
             <input
               type="email"
               placeholder="Enter your email"
               className="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
               required
             />
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-sm font-semibold mb-2">Password</label>
             <input
               type="password"
               placeholder="Enter password"
               className="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
               required
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold mt-4 cursor-pointer"
-          >
+            className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold mt-4 cursor-pointer">
             Register
           </button>
+
+          <div className="text-center mt-1">
+            <p className="text-sm mb-2">Or sign up using</p>
+            <button
+              onClick={handleGoogleSignIn}
+              className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white cursor-pointer transition-all px-4 py-2 rounded-lg font-semibold w-full">
+              Sign up with Google
+            </button>
+          </div>
+
+          <p className="text-center text-sm mt-6">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-yellow-300 font-semibold hover:underline">
+              Login here
+            </Link>
+          </p>
         </form>
-
-        {/* Google Signup */}
-        <div className="text-center mt-1">
-          <p className="text-sm mb-2">Or sign up using</p>
-          <button
-            onClick={handleGoogleSignup}
-            className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white cursor-pointer transition-all px-4 py-2 rounded-lg font-semibold w-full"
-          >
-            Sign up with Google
-          </button>
-        </div>
-
-        
-        <p className="text-center text-sm mt-6">
-          Already have an account?{" "}
-          <Link
-            to="/login"
-            className="text-yellow-300 font-semibold hover:underline"
-          >
-            Login here
-          </Link>
-        </p>
       </div>
     </div>
   );
 };
-
 export default Register;
