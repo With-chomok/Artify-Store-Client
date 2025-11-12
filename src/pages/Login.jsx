@@ -62,15 +62,19 @@ const Login = () => {
               required
             />
           </div>
-
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold cursor-pointer mt-4">
+            Login
+          </button>
           <button
             onClick={handleGoogleSignIn}
-            className="btn w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold border-none mt-4  shadow-none">
+            className="btn w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold border-none shadow-none">
             <svg
               className="rounded-full"
               aria-label="Google logo"
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512">
               <g>
@@ -90,12 +94,6 @@ const Login = () => {
               </g>
             </svg>
             Login with Google
-          </button>
-
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white transition-all py-2 rounded-lg font-semibold cursor-pointer">
-            Login
           </button>
         </form>
 
