@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layout/MainLayout.jsx";
-import Home from "./pages/Home/Home.jsx";
 import Error from "./pages/Error.jsx";
 import App from "./App.jsx";
 import Login from "./pages/Login.jsx";
@@ -15,6 +14,8 @@ import AddArtwork from "./pages/AddArtwork.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
+import Home from "./pages/home/Home.jsx";
+import ArtworkDetails from "./pages/ArtworkDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/explore", element: <ExploreArt /> },
+      { path: "/artworks/id", element: <ArtworkDetails /> },
+
       {
         path: "/mygallery",
         element: (
@@ -48,6 +51,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddArtwork />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/artworks/:id",
+        element: (
+          <PrivateRoute>
+            <ArtworkDetails />,
           </PrivateRoute>
         ),
       },

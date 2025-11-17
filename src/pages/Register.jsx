@@ -43,7 +43,8 @@ const Register = () => {
       });
   };
 
-  const handleGoogleSignIn = () => {
+  const handleGoogleSignIn = (e) => {
+    e.preventDefault();
     toast.loading("Creating user...", { id: "create-user" });
     signInWithGoogle()
       .then((result) => {
