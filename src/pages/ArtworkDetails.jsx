@@ -94,8 +94,8 @@ const ArtworkDetails = () => {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#faf9f6] to-[#e7eafc] py-10 px-4">
-      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+    <section className="min-h-screen  py-10 px-4">
+      <div className="max-w-5xl mx-auto add-artwork-form rounded-2xl shadow-lg overflow-hidden">
         {/* Artwork Image */}
         <img
           src={artwork.image}
@@ -107,9 +107,9 @@ const ArtworkDetails = () => {
           {/* Title and Artist */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-800">{artwork.title}</h2>
-              <p className="text-lg text-gray-500 mt-1">
-                by <span className="font-semibold text-indigo-600">{artwork.userName}</span>
+              <h2 className="text-3xl font-bold">{artwork.title}</h2>
+              <p className="text-lg  mt-1">
+                by <span className="font-semibold ">{artwork.userName}</span>
               </p>
             </div>
             <div className="flex gap-3 mt-3 md:mt-0">
@@ -130,12 +130,12 @@ const ArtworkDetails = () => {
 
           {/* Description */}
           <div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Description</h3>
-            <p className="text-gray-600 leading-relaxed">{artwork.description}</p>
+            <h3 className="text-xl font-semibold mb-2">Description</h3>
+            <p className=" leading-relaxed">{artwork.description}</p>
           </div>
 
           {/* Artwork Info */}
-          <div className="grid md:grid-cols-2 gap-4 text-gray-600">
+          <div className="grid md:grid-cols-2 gap-4 ">
             <p><strong>Category:</strong> {artwork.category}</p>
             <p><strong>Medium:</strong> {artwork.medium}</p>
             {artwork.dimensions && <p><strong>Dimensions:</strong> {artwork.dimensions}</p>}
@@ -147,7 +147,7 @@ const ArtworkDetails = () => {
           
           {artistInfo && (
             <div className="mt-10 border-t pt-6">
-              <h3 className="text-xl font-semibold mb-4 text-gray-700">Artist Info</h3>
+              <h3 className="text-xl font-semibold mb-4 ">Artist Info</h3>
               <div className="flex items-center gap-4">
                 <img
                   src={user.photoURL}
@@ -156,7 +156,7 @@ const ArtworkDetails = () => {
                 />
                 <div>
                   <p className="font-semibold text-lg">{artistInfo.name}</p>
-                  <p className="text-gray-500">
+                  <p >
                     Total Artworks: <strong>{artistInfo.total}</strong>
                   </p>
                 </div>

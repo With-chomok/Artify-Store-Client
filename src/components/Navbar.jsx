@@ -1,7 +1,7 @@
 import { use, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-
+import '../../src/App.css'
 const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
   const [showCard, setShowCard] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
               />{" "}
             </svg>
           </div>
-          <ul
+          <ul id="nav"
             tabIndex="-1"
             className="menu bg-pink-800 menu-sm dropdown-content  rounded-box z-1 mt-2 w-52 p-2 shadow">
             <NavLink to="/">Home</NavLink>

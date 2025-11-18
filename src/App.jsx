@@ -16,8 +16,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-[#fdfbfb] to-[#ebedee] text-gray-800">
-      {/* ==================== Banner / Slider ==================== */}
+    <div className="add-artwork-form text-gray-800">
+      {/* ======== Banner / Slider ========= */}
       <section className="relative overflow-hidden">
         <div className="carousel w-full h-[500px]">
           <div id="slide1" className="carousel-item relative w-full">
@@ -94,7 +94,8 @@ const Home = () => {
                   className="w-full h-56 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg">{art.title}</h3>
+                  <h3 className="font-semibold text-2xl">{art.title}</h3>
+                  <h4 className="font-semibold text-lg">{art.name}</h4>
                   <p className="text-sm text-gray-600">
                     by <span className="font-medium">{art.artist}</span>
                   </p>

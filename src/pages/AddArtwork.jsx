@@ -9,6 +9,7 @@ const AddArtwork = () => {
   const [formData, setFormData] = useState({
     image: "",
     title: "",
+    name: "",
     category: "",
     medium: "",
     description: "",
@@ -28,7 +29,7 @@ const AddArtwork = () => {
     e.preventDefault();
 
     // simple validation
-    if (!formData.image || !formData.title || !formData.category || !formData.medium || !formData.description) {
+    if (!formData.image || !formData.title || !formData.name || !formData.category || !formData.medium || !formData.description) {
       return toast.error("Please fill all required fields!");
     }
 
@@ -68,9 +69,9 @@ const AddArtwork = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#f9fafb] to-[#eef2ff] py-10 px-4">
-      <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Add New Artwork</h2>
+    <section className="min-h-screen  py-10 px-4">
+      <div className="max-w-3xl mx-auto p-8 rounded-2xl add-artwork-form  shadow-lg">
+        <h2 className="text-3xl font-bold mb-6 text-center">Add New Artwork</h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
             
@@ -82,8 +83,21 @@ const AddArtwork = () => {
               name="image"
               value={formData.image}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
               placeholder="https://example.com/image.jpg"
+              required
+            />
+          </div>
+          {/* Art. name */}
+          <div>
+            <label className="block mb-2 font-medium">Artist Name *</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className=" w-full bg-purple-600 border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              placeholder="Artwork title"
               required
             />
           </div>
@@ -96,7 +110,7 @@ const AddArtwork = () => {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className=" w-full bg-purple-600 border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
               placeholder="Artwork title"
               required
             />
@@ -109,7 +123,7 @@ const AddArtwork = () => {
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className="w-full bg-purple-600 border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
               required
             >
               <option value="">Select Category</option>
@@ -128,7 +142,7 @@ const AddArtwork = () => {
               name="medium"
               value={formData.medium}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring bg-purple-600 focus:ring-indigo-300"
               placeholder="Oil Paint, Photoshop, etc."
               required
             />
@@ -141,7 +155,7 @@ const AddArtwork = () => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
               rows="4"
               placeholder="Describe your artwork..."
               required
@@ -156,7 +170,7 @@ const AddArtwork = () => {
               name="dimensions"
               value={formData.dimensions}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
               placeholder="e.g. 12x18 inches"
             />
           </div>
@@ -169,7 +183,7 @@ const AddArtwork = () => {
               name="price"
               value={formData.price}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
               placeholder="e.g. 150"
             />
           </div>
@@ -181,7 +195,7 @@ const AddArtwork = () => {
               name="visibility"
               value={formData.visibility}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+              className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
             >
               <option value="Public">Public</option>
               <option value="Private">Private</option>
@@ -196,7 +210,7 @@ const AddArtwork = () => {
                 type="text"
                 value={user?.displayName || ""}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2 bg-gray-100 text-gray-500"
+                className="bg-purple-600 w-full border rounded-lg px-4 py-2  "
               />
             </div>
             <div>
@@ -205,7 +219,7 @@ const AddArtwork = () => {
                 type="email"
                 value={user?.email || ""}
                 readOnly
-                className="w-full border rounded-lg px-4 py-2 bg-gray-100 text-gray-500"
+                className="bg-purple-600 w-full border rounded-lg px-4 py-2 "
               />
             </div>
           </div>

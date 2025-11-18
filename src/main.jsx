@@ -7,7 +7,7 @@ import Error from "./pages/Error.jsx";
 import App from "./App.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import ExploreArt from "./pages/ExploreArt.jsx";
+
 import MyGallery from "./pages/MyGallery.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import AddArtwork from "./pages/AddArtwork.jsx";
@@ -16,6 +16,7 @@ import AuthProvider from "./context/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home/Home.jsx";
 import ArtworkDetails from "./pages/ArtworkDetails.jsx";
+import ExploreArtworks from "./pages/ExploreArtworks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       { path: "/home", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
-      { path: "/explore", element: <ExploreArt /> },
+      { path: "/explore", element: <ExploreArtworks /> },
       { path: "/artworks/id", element: <ArtworkDetails /> },
 
       {
