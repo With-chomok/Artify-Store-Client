@@ -227,7 +227,7 @@ const AddArtwork = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-lg hover:bg-indigo-700 transition duration-300"
+          className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:opacity-90 "
           >
             Add Artwork
           </button>

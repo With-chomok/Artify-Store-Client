@@ -2,8 +2,8 @@ import React from "react";
 
 const CommunityHighlights = () => {
   return (
-    <section className="py-20 max-w-6xl mx-auto px-4 text-center">
-      <h2 className="text-3xl font-semibold mb-8">Community Highlights</h2>
+    <section className="md:py-20 py-10 px-5 md:mx-5 rounded-2xl md:px-20 text-center community-background">
+      <h2 className="md:text-4xl text-2xl text-white font-bold mb-8">Community Highlights</h2>
       <div className="grid md:grid-cols-3 gap-6">
         <div className="bg-gradient-to-r from-pink-100 to-pink-50 rounded-xl p-6 shadow">
           <h3 className="font-bold text-xl mb-2">🎨 10K+ Artworks Shared</h3>

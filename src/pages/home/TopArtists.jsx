@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 const TopArtists = () => {
   return (
-    <section className="bg-[#f7f8fa] py-16">
-      <h2 className="text-3xl font-semibold text-center mb-10">
+    <section className="community-background rounded-2xl md:mx-5 py-10 md:py-16 ">
+      <h2 className="md:text-4xl text-2xl text-white font-bold text-center mb-10">
         Top Artists of the Week
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
@@ -12,7 +12,7 @@ const TopArtists = () => {
           (name, i) => (
             <motion.div
               key={i}
-              className="bg-white shadow-md rounded-lg p-6 w-64 text-center hover:shadow-lg"
+              className="bg-[#15094b] shadow-2xl rounded-lg p-6 w-60 text-center hover:shadow-lg"
               whileHover={{ scale: 1.05 }}>
               <img
                 src={`https://randomuser.me/api/portraits/${
@@ -21,8 +21,8 @@ const TopArtists = () => {
                 alt={name}
                 className="w-20 h-20 rounded-full mx-auto mb-3 object-cover"
               />
-              <h4 className="font-semibold">{name}</h4>
-              <p className="text-gray-500 text-sm">Contemporary Artist</p>
+              <h4 className="font-semibold text-white">{name}</h4>
+              <p className="text-white text-sm">Contemporary Artist</p>
             </motion.div>
           )
         )}

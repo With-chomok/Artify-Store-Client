@@ -1,33 +1,29 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ExploreArtworks = () => {
-  const [artworks, setArtworks] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  
-  useEffect(() => {
-    fetch("http://localhost:5000/artworks")
-      .then(res => res.json())
-      .then(data => setArtworks(data))
-      .catch(err => console.log(err));
-  }, []);
+  const artworks = useLoaderData();
 
   // Filter search
-  const filtered = artworks.filter(item =>
-    item.title.toLowerCase().includes(searchText.toLowerCase()) ||
-    item.artist.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const filtered = artworks.filter((item) => {
+    const title = item.title?.toLowerCase() || "";
+    const artist = item.artist?.toLowerCase() || "";
+    const query = searchText.toLowerCase();
+
+    return title.includes(query) || artist.includes(query);
+  });
 
   return (
     <div className="min-h-screen px-6 py-10  text-white">
-      
       {/* Search Input */}
       <div className="max-w-xl mx-auto mb-10">
         <input
+          name="search"
           type="text"
-          placeholder="Search by title or artist..."
-          className="w-full p-3 rounded-xl text-black"
+          placeholder="Search by title..."
+          className="bg-[#15094b] w-full p-3 rounded-xl text-white"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
@@ -38,8 +34,7 @@ const ExploreArtworks = () => {
         {filtered.map((art) => (
           <div
             key={art._id}
-            className="bg-[#1a1338] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
-          >
+            className="bg-[#1a1338] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300">
             <img
               src={art.image}
               alt={art.title}
@@ -48,7 +43,7 @@ const ExploreArtworks = () => {
 
             <div className="p-5">
               <h2 className="text-xl font-bold">{art.title}</h2>
-              <p className="text-sm mt-1 opacity-80">Artist: {art.artist}</p>
+              <p className="text-sm mt-1 opacity-80">Artist: {art.name}</p>
               <p className="text-sm opacity-80">Category: {art.category}</p>
 
               {/* Likes */}
@@ -56,7 +51,7 @@ const ExploreArtworks = () => {
 
               {/* View Details */}
               <Link to={`/artworks/${art._id}`}>
-                <button className="mt-4 bg-white text-purple-800 font-bold px-4 py-2 rounded hover:bg-gray-200">
+                <button className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 mt-2 transition">
                   View Details
                 </button>
               </Link>

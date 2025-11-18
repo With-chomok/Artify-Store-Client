@@ -24,11 +24,24 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <Error />,
     children: [
-      { index: true, element: <App /> },
-      { path: "/home", element: <Home /> },
+      {
+        index: true,
+        element: <App />,
+        loader: () => fetch("http://localhost:5000/artworks"),
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
-      { path: "/explore", element: <ExploreArtworks /> },
+
+      {
+        path: "/explore",
+        element: <ExploreArtworks />,
+        loader: () => fetch("http://localhost:5000/artworks"),
+      },
+
       { path: "/artworks/id", element: <ArtworkDetails /> },
 
       {

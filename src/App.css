@@ -25,3 +25,27 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+.community-background {
+  background: linear-gradient(
+    135deg,
+    #1e0b47,
+    #4b1fa6,
+    #7b2cbf,
+    #c026d3
+  );
+  
+  animation: communityGradient 10s ease infinite;
+
+}
+
+@keyframes communityGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,81 +1,24 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { motion } from "framer-motion";
 import CommunityHighlights from "./pages/home/CommunityHighlights";
 import TopArtists from "./pages/home/TopArtists";
+import Banner from "./pages/home/Banner";
 
 const Home = () => {
-  const [artworks, setArtworks] = useState([]);
-
+  // const [artworks, setArtworks] = useState([]);
   // ✅ Fetch 6 most recent artworks from MongoDB
-  useEffect(() => {
-    fetch("http://localhost:5000/artworks")
-      .then((res) => res.json())
-      .then((data) => setArtworks(data))
-      .catch((err) => console.error(err));
-  }, []);
+  const artworks = useLoaderData();
 
   return (
-    <div className="add-artwork-form text-gray-800">
+    <div className="add-artwork-form text-gray-800 space-y-20 ">
       {/* ======== Banner / Slider ========= */}
-      <section className="relative overflow-hidden">
-        <div className="carousel w-full h-[500px]">
-          <div id="slide1" className="carousel-item relative w-full">
-            <img
-              src="https://i.ibb.co.com/cXpHgJDJ/hq720.jpg"
-              className="w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
-              <h2 className="text-4xl font-bold mb-3">Discover Masterpieces</h2>
-              <p>Explore breathtaking artworks from talented creators.</p>
-            </div>
-            <a href="#slide3" className="absolute left-5 top-1/2 btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide2" className="absolute right-5 top-1/2 btn btn-circle">
-              ❯
-            </a>
-          </div>
+      <Banner></Banner>
 
-          <div id="slide2" className="carousel-item relative w-full">
-            <img
-              src="https://i.ibb.co.com/7xzcdzpx/header-artist.png"
-              className="w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
-              <h2 className="text-4xl font-bold mb-3">Meet the Artists</h2>
-              <p>Learn about the people behind your favorite artworks.</p>
-            </div>
-            <a href="#slide1" className="absolute left-5 top-1/2 btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide3" className="absolute right-5 top-1/2 btn btn-circle">
-              ❯
-            </a>
-          </div>
 
-          <div id="slide3" className="carousel-item relative w-full">
-            <img
-              src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1400&q=80"
-              className="w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
-              <h2 className="text-4xl font-bold mb-3">Share Your Creativity</h2>
-              <p>Upload your art and inspire others around the world.</p>
-            </div>
-            <a href="#slide2" className="absolute left-5 top-1/2 btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide1" className="absolute right-5 top-1/2 btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-      </section>
 
-      {/* ==================== Featured Artworks ==================== */}
-      <section className="py-16 max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-semibold text-center mb-10">
+      {/* ======== Featured Artworks ========== */}
+      <section className="md:py-16  md:px-4">
+        <h2 className="md:text-4xl text-3xl mb-10 text-white font-bold text-center">
           Featured Artworks
         </h2>
         {artworks.length === 0 ? (
@@ -85,25 +28,23 @@ const Home = () => {
             {artworks.map((art) => (
               <motion.div
                 key={art._id}
-                className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
-                whileHover={{ scale: 1.02 }}
-              >
+                className="bg-[#1a1338] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
+                whileHover={{ scale: 1.02 }}>
                 <img
                   src={art.image}
                   alt={art.title}
                   className="w-full h-56 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="font-semibold text-2xl">{art.title}</h3>
-                  <h4 className="font-semibold text-lg">{art.name}</h4>
-                  <p className="text-sm text-gray-600">
-                    by <span className="font-medium">{art.artist}</span>
+                  <h3 className="font-semibold text-white text-2xl">{art.title}</h3>
+                  <h4 className="font-semibold  text-white text-lg">{art.name}</h4>
+                  <p className="text-sm text-white">
+                    by <span className="font-medium ">{art.artist}</span>
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">{art.category}</p>
+                  <p className="text-xs text-white mb-5  mt-1">{art.category}</p>
                   <Link
                     to={`/artworks/${art._id}`}
-                    className="text-blue-600 mt-3 inline-block hover:underline"
-                  >
+                    className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
                     View Details →
                   </Link>
                 </div>
@@ -113,25 +54,33 @@ const Home = () => {
         )}
       </section>
 
-      {/* ==================== Top Artists of the Week ==================== */}
-    <TopArtists></TopArtists>
 
-      {/* ==================== Community Highlights ==================== */}
-    
-            <CommunityHighlights></CommunityHighlights>
 
-      {/* ==================== Call to Action ==================== */}
-      <section className="bg-gradient-to-r from-blue-100 to-pink-100 text-center py-16">
-        <h3 className="text-2xl font-semibold mb-4">
+      {/* ========= Top Artists of the Week ======== */}
+      <TopArtists></TopArtists>
+
+
+
+      {/* ========= Community Highlights =========== */}
+
+
+
+      <CommunityHighlights></CommunityHighlights>
+
+
+
+      {/* ====== Call to Action ========= */}
+      <section className="bg-gradient-to-r from-blue-100 to-pink-100 text-center py-10 md:py-16 community-background md:mx-5 rounded-2xl">
+        <h3 className="text-4xl text-white font-bold mb-10">
           Ready to showcase your creativity?
         </h3>
         <Link
           to="/addart"
-          className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
-        >
+          className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:opacity-90 transition">
           Add Artwork
         </Link>
       </section>
+
     </div>
   );
 };
