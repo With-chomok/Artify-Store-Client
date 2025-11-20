@@ -41,10 +41,10 @@ const Home = () => {
                   <p className="text-sm text-white">
                     by <span className="font-medium ">{art.artist}</span>
                   </p>
-                  <p className="text-xs text-white mb-5  mt-1">{art.category}</p>
+                  <p className="text-xs text-white mb-4 mt-1">{art.category}</p>
                   <Link
                     to={`/artworks/${art._id}`}
-                    className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
+                    className="btn border-none w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
                     View Details →
                   </Link>
                 </div>

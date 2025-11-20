@@ -16,9 +16,9 @@ const ExploreArtworks = () => {
   });
 
   return (
-    <div className="min-h-screen px-6 py-10  text-white">
+    <div className="min-h-screen px-6 py-10 my-20  text-white">
       {/* Search Input */}
-      <div className="max-w-xl mx-auto mb-10">
+      <div className="max-w-xl mx-auto mb-15">
         <input
           name="search"
           type="text"
@@ -47,12 +47,12 @@ const ExploreArtworks = () => {
               <p className="text-sm opacity-80">Category: {art.category}</p>
 
               {/* Likes */}
-              <p className="mt-2">❤️ {art.likes} likes</p>
+              <p className="mt-2">👍 {art.likes} likes</p>
 
               {/* View Details */}
               <Link to={`/artworks/${art._id}`}>
                 <button className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 mt-2 transition">
-                  View Details
+                  View Details →
                 </button>
               </Link>
             </div>

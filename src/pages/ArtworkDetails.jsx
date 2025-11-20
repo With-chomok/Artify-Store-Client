@@ -12,8 +12,8 @@ const ArtworkDetails = () => {
   const [artistInfo, setArtistInfo] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(user.photoURL);
-  // ✅ Fetch artwork details
+
+  //  Fetch artwork details
   useEffect(() => {
     const fetchArtwork = async () => {
       try {
@@ -22,7 +22,7 @@ const ArtworkDetails = () => {
   
         setArtwork(data);
 
-        // ✅ Fetch artist info based on artist email
+        //  Fetch artist info based on artist email
         const artistRes = await fetch(
           `http://localhost:5000/artworks?email=${data.userEmail}`
         );
@@ -57,7 +57,7 @@ const ArtworkDetails = () => {
     }
   };
 
-  // ✅ Handle Add to Favorites
+  // Handle Add to Favorites
   const handleFavorite = async () => {
     if (!user) return toast.error("Please login first!");
     const favoriteData = {
@@ -117,7 +117,7 @@ const ArtworkDetails = () => {
                 onClick={handleLike}
                 className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition"
               >
-                ❤️ Like ({artwork.likes || 0})
+                👍 Like ({artwork.likes || 0})
               </button>
               <button
                 onClick={handleFavorite}
