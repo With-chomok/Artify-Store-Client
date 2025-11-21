@@ -12,7 +12,7 @@ const TopArtists = () => {
           (name, i) => (
             <motion.div
               key={i}
-              className="bg-[#15094b] shadow-2xl rounded-lg p-6 w-60 text-center hover:shadow-lg"
+              className="bg-white/10 backdrop-blur-lg border border-white/20  rounded-xl shadow-xl transition hover:scale-105 p-6 w-60 text-center hover:shadow-lg"
               whileHover={{ scale: 1.05 }}>
               <img
                 src={`https://randomuser.me/api/portraits/${

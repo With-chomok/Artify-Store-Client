@@ -18,13 +18,13 @@ const AddArtwork = () => {
     visibility: "Public",
   });
 
-  // ✅ handle change
+  // handle change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // ✅ handle submit
+  //  handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 

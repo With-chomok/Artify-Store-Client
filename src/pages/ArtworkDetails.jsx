@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
+import Loading from "../components/Loading";
 
 
 const ArtworkDetails = () => {
@@ -11,7 +12,6 @@ const ArtworkDetails = () => {
   const [artwork, setArtwork] = useState(null);
   const [artistInfo, setArtistInfo] = useState(null);
   const [loading, setLoading] = useState(true);
-
 
   //  Fetch artwork details
   useEffect(() => {
@@ -41,7 +41,7 @@ const ArtworkDetails = () => {
     fetchArtwork();
   }, [id]);
 
-  // ✅ Handle Like Button
+  // Handle Like Button
   const handleLike = async () => {
     try {
       const res = await fetch(`http://localhost:5000/artworks/like/${id}`, {
@@ -86,7 +86,7 @@ const ArtworkDetails = () => {
   };
 
   if (loading) {
-    return <p className="text-center mt-10">Loading artwork details...</p>;
+    return <Loading/>
   }
 
   if (!artwork) {
@@ -100,7 +100,7 @@ const ArtworkDetails = () => {
         <img
           src={artwork.image}
           alt={artwork.title}
-          className=" object-cover"
+          className="h-[450px] w-full object-center"
         />
 
         <div className="p-8 space-y-6">

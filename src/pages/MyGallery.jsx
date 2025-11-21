@@ -7,7 +7,7 @@ const MyGallery = () => {
   const [myArtworks, setMyArtworks] = useState([]);
   const [selected, setSelected] = useState(null);
 
-  
+
   // Load My Artworks
   useEffect(() => {
     if (!user?.email) return;
@@ -82,7 +82,7 @@ const MyGallery = () => {
       <h1 className="text-4xl font-bold text-center mb-8">My Gallery</h1>
 
       {myArtworks.length === 0 && (
-        <p className="text-center text-lg opacity-80">
+        <p className="text-center text-xl font-bold opacity-80">
           You haven’t added any artworks yet.
         </p>
       )}
@@ -92,7 +92,7 @@ const MyGallery = () => {
         {myArtworks.map((item) => (
           <div
             key={item?._id}
-            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition hover:scale-105">
+            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition hover:scale-105 duration-700">
             <img
               src={item?.image}
               alt={item?.title}
@@ -105,13 +105,13 @@ const MyGallery = () => {
             <div className="flex justify-between mt-4">
               <button
                 onClick={() => openUpdateModal(item)}
-                className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
+                className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
                 Update
               </button>
 
               <button
                 onClick={() => handleDelete(item?._id)}
-                className="px-4 py-2 bg-red-500 rounded-lg hover:bg-red-600">
+                className="bg-gradient-to-r from-red-900 via-red-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
                 Delete
               </button>
             </div>

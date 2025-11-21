@@ -34,7 +34,7 @@ const ExploreArtworks = () => {
         {filtered.map((art) => (
           <div
             key={art._id}
-            className="bg-[#1a1338] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300">
+            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl overflow-hidden hover:scale-105 transition duration-700">
             <img
               src={art.image}
               alt={art.title}
@@ -49,7 +49,7 @@ const ExploreArtworks = () => {
               {/* Likes */}
               <p className="mt-2">👍 {art.likes} likes</p>
 
-              {/* View Details */}
+              {/* View Details  */}
               <Link to={`/artworks/${art._id}`}>
                 <button className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 mt-2 transition">
                   View Details →

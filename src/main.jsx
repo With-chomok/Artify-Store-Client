@@ -17,6 +17,7 @@ import { Toaster } from "react-hot-toast";
 import Home from "./pages/home/Home.jsx";
 import ArtworkDetails from "./pages/ArtworkDetails.jsx";
 import ExploreArtworks from "./pages/ExploreArtworks.jsx";
+import Loading from "./components/Loading.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,10 +28,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <App />,
+        hydrateFallbackElement: <Loading />,
         loader: () => fetch("http://localhost:5000/artworks"),
       },
       {
         path: "/home",
+
         element: <Home />,
       },
       { path: "/login", element: <Login /> },
@@ -39,6 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/explore",
         element: <ExploreArtworks />,
+        hydrateFallbackElement: <Loading />,
         loader: () => fetch("http://localhost:5000/artworks"),
       },
 
@@ -46,6 +50,7 @@ const router = createBrowserRouter([
 
       {
         path: "/mygallery",
+
         element: (
           <PrivateRoute>
             <MyGallery />
@@ -54,6 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myfavourite",
+
         element: (
           <PrivateRoute>
             <Favorites />
@@ -62,6 +68,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/addart",
+
         element: (
           <PrivateRoute>
             <AddArtwork />
@@ -70,6 +77,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/artworks/:id",
+
         element: (
           <PrivateRoute>
             <ArtworkDetails />,

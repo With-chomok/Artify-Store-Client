@@ -6,7 +6,7 @@ import Banner from "./pages/home/Banner";
 
 const Home = () => {
   // const [artworks, setArtworks] = useState([]);
-  // ✅ Fetch 6 most recent artworks from MongoDB
+  //  Fetch 6 most recent artworks from MongoDB
   const artworks = useLoaderData();
 
   return (
@@ -21,14 +21,16 @@ const Home = () => {
         <h2 className="md:text-4xl text-3xl mb-10 text-white font-bold text-center">
           Featured Artworks
         </h2>
-        {artworks.length === 0 ? (
-          <p className="text-center text-gray-500">Loading artworks...</p>
+        {artworks.length === 0 ?  (
+          <p className="text-center text-xl text-white">Please Add Your Artworks. <br /> <Link to='/addart' className="underline font-semibold text-red-400">Click Here</Link>.</p>
+        
+        
         ) : (
           <div className="grid md:grid-cols-3 gap-6">
             {artworks.map((art) => (
               <motion.div
                 key={art._id}
-                className="bg-[#1a1338] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
+                className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition-all duration-700 hover:scale-105"
                 whileHover={{ scale: 1.02 }}>
                 <img
                   src={art.image}
@@ -56,12 +58,12 @@ const Home = () => {
 
 
 
-      {/* ========= Top Artists of the Week ======== */}
+      {/* ====== Top Artists of the Week ====== */}
       <TopArtists></TopArtists>
 
 
 
-      {/* ========= Community Highlights =========== */}
+      {/* ====== Community Highlights ======= */}
 
 
 
