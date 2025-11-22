@@ -49,3 +49,17 @@ body {
     background-position: 0% 50%;
   }
 }
+
+
+/* Soft blob animation inspired by uiverse.io */
+@keyframes blobMove {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(12px, -8px) scale(1.03); }
+  66% { transform: translate(-10px, 10px) scale(0.98); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blobMove 8s ease-in-out infinite;
+  will-change: transform;
+}

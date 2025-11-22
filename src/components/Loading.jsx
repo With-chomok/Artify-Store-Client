@@ -2,7 +2,7 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-6 m-20">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-6 md:m-20">
 
     <div className="flex flex-col gap-4 w-full bg-white/5 p-4 rounded-xl shadow-md">
       <div className="skeleton h-32 w-full"></div>

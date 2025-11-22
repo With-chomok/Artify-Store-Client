@@ -8,37 +8,60 @@ const Favorites = () => {
   // Load favorites when page open
   useEffect(() => {
     fetch(`http://localhost:5000/favorites?email=${user.email}`)
-      .then(res => res.json())
-      .then(data => setFavorites(data));
+      .then((res) => res.json())
+      .then((data) => setFavorites(data));
   }, [user.email]);
 
   // Remove favorite item
   const handleUnfavorite = (id) => {
     fetch(`http://localhost:5000/favorites/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(() => {
-        setFavorites(favorites.filter(item => item._id !== id));
+        setFavorites(favorites.filter((item) => item._id !== id));
       });
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 m-20">
-      {favorites.map(item => (
-        <div key={item._id} className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition duration-700 hover:scale-105">
-          <img src={item.image} className="w-full h-56 object-cover rounded" />
-          <h2 className="text-xl font-bold mt-2">{item.title}</h2>
-          <p>{item.artist}</p>
+    <div className="min-h-screen px-4 md:px-10 lg:px-20 py-16 text-white">
+      <h1 className="text-3xl md:text-4xl font-bold mb-10 text-center">
+         My Favorite Artworks
+      </h1>
 
-          <button
-            onClick={() => handleUnfavorite(item._id)}
-            className="w-full bg-gradient-to-r from-red-900 via-red-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:opacity-90 transition mt-4"
-          >
-            Remove from Favorites
-          </button>
-        </div>
-      ))}
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10">
+        {favorites.map((item) => (
+          <div
+            key={item._id}
+            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl 
+              shadow-xl transition duration-700 hover:scale-105">
+            <img
+              src={item.image}
+              className="w-full h-56 object-cover rounded-lg"
+            />
+
+            <h2 className="text-xl font-bold mt-3">{item.title}</h2>
+            <p className="opacity-80 text-sm">Artist: {item.artist}</p>
+
+            <button
+              onClick={() => handleUnfavorite(item._id)}
+              className="w-full bg-gradient-to-r 
+                from-red-900 via-red-500 to-purple-600 
+                text-white font-semibold px-4 py-2 rounded-full 
+                shadow-md hover:opacity-90 transition mt-4">
+              Remove from Favorites
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* If no items */}
+      {favorites.length === 0 && (
+        <p className="text-center text-gray-300 mt-10 text-lg">
+          You have no favorite artworks yet...
+        </p>
+      )}
     </div>
   );
 };
