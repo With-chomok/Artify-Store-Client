@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  reload,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -40,6 +41,7 @@ const AuthProvider = ({ children }) => {
   const signOutUser = () => {
     setLoading(true);
     toast.success("sign Out Successfull");
+    
     return signOut(auth);
   };
 

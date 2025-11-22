@@ -10,7 +10,7 @@ const Home = () => {
   const artworks = useLoaderData();
 
   return (
-    <div className="add-artwork-form text-gray-800 space-y-20 ">
+    <div className=" text-gray-800 m-2 md:m-10 space-y-20 ">
       {/* ======== Banner / Slider ========= */}
       <Banner></Banner>
 

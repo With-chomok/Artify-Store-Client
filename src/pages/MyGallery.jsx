@@ -126,7 +126,7 @@ const MyGallery = () => {
           className="modal"
           onClose={() => setSelected(null)} 
         >
-          <div className="modal-box bg-[#1e1b2e] text-white border border-white/20">
+          <div className="modal-box bg-white/20 backdrop-blur-3xl border border-white/20 text-white ">
             <h3 className="font-bold text-lg mb-4">Update Artwork</h3>
 
             <form onSubmit={handleUpdateSubmit} className="space-y-3">
@@ -179,13 +179,13 @@ const MyGallery = () => {
                 className="w-full p-2 bg-white/10 rounded-lg"
               />
 
-              <button className="w-full py-2 bg-purple-600 rounded-lg hover:bg-purple-700">
+              <button className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-xl shadow-md hover:opacity-90 transition">
                 Update
               </button>
             </form>
 
             <form method="dialog" className="mt-3">
-              <button className="btn w-full">Close</button>
+              <button className="w-full bg-gradient-to-r from-red-900 via-red-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-xl shadow-md hover:opacity-90 transition">Close</button>
             </form>
           </div>
         </dialog>
