@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { Typewriter } from "react-simple-typewriter";
 
 const MyGallery = () => {
   const { user } = useContext(AuthContext);
@@ -79,7 +80,17 @@ const MyGallery = () => {
 
   return (
     <div className="min-h-screen px-6 py-10 text-white">
-      <h1 className="text-4xl font-bold text-center mb-8">My Gallery</h1>
+      <h1 className="text-4xl font-bold text-center mb-8"><Typewriter
+                  words={[
+                    "My Gallery.",
+                  ]}
+                  loop={0}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={70}
+                  delaySpeed={1500}
+                /></h1>
 
       {myArtworks.length === 0 && (
         <p className="text-center text-xl font-bold opacity-80">

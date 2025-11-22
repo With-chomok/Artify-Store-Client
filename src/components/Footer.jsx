@@ -41,7 +41,7 @@ const Footer = () => {
               href="https://twitter.com"
               target="_blank"
               className="text-white/70 hover:text-white transition text-xl">
-              <i className="fa-brands fa-twitter"></i>
+              <i className="fa-brands fa-x-twitter"></i>
             </a>
             <a
               href="https://youtube.com"

@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Typewriter } from "react-simple-typewriter";
 
 const Favorites = () => {
   const { user } = useContext(AuthContext);
@@ -24,9 +25,19 @@ const Favorites = () => {
   };
 
   return (
-    <div className="min-h-screen px-4 md:px-10 lg:px-20 py-16 text-white">
+    <div className="min-h-screen px-4 md:px-5 lg:px-20 py-16 text-white">
       <h1 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-         My Favorite Artworks
+         <Typewriter
+                  words={[
+                    "My Favorite Artworks.",
+                  ]}
+                  loop={0}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={70}
+                  delaySpeed={1500}
+                />
       </h1>
 
       <div

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import CommunityHighlights from "./pages/home/CommunityHighlights";
 import TopArtists from "./pages/home/TopArtists";
 import Banner from "./pages/home/Banner";
+import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
   // const [artworks, setArtworks] = useState([]);
@@ -19,7 +20,17 @@ const Home = () => {
       {/* ======== Featured Artworks ========== */}
       <section className="md:py-16  md:px-4">
         <h2 className="md:text-4xl text-3xl mb-10 text-white font-bold text-center">
-          Featured Artworks
+        <Typewriter
+                  words={[
+                    "Featured Artworks.",
+                  ]}
+                  loop={0}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={70}
+                  delaySpeed={1500}
+                />
         </h2>
         {artworks.length === 0 ?  (
           <p className="text-center text-xl text-white">Please Add Your Artworks. <br /> <Link to='/addart' className="underline font-semibold text-red-400">Click Here</Link>.</p>
@@ -74,7 +85,18 @@ const Home = () => {
       {/* ====== Call to Action ========= */}
       <section className="bg-gradient-to-r from-blue-100 to-pink-100 text-center py-10 md:py-16 community-background md:mx-5 rounded-2xl">
         <h3 className="text-4xl text-white font-bold mb-10">
-          Ready to showcase your creativity?
+          
+          <Typewriter
+                  words={[
+                    "Ready to showcase your creativity?.",
+                  ]}
+                  loop={0}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={70}
+                  delaySpeed={1500}
+                />
         </h3>
         <Link
           to="/addart"

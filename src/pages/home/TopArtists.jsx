@@ -1,11 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
 const TopArtists = () => {
   return (
     <section className="community-background rounded-2xl md:mx-5 py-10 md:py-16 ">
       <h2 className="md:text-4xl text-2xl text-white font-bold text-center mb-10">
-        Top Artists of the Week
+        <Typewriter
+          words={["Top Artists of the Week."]}
+          loop={0}
+          cursor
+          cursorStyle="|"
+          typeSpeed={70}
+          deleteSpeed={70}
+          delaySpeed={1500}
+        />
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
         {["Tahia Rahman", "Rafiul Islam", "Aminul Haque", "Sajid Ahmed"].map(

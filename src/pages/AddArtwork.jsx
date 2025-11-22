@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { Typewriter } from "react-simple-typewriter";
 
 
 const AddArtwork = () => {
@@ -71,7 +72,17 @@ const AddArtwork = () => {
   return (
     <section className="min-h-screen  py-10 px-4">
       <div className="max-w-3xl mx-auto p-8 rounded-2xl add-artwork-form  shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center">Add New Artwork</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center"><Typewriter
+                  words={[
+                    "Add New Artwork.",
+                  ]}
+                  loop={0}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={70}
+                  delaySpeed={1500}
+                /></h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
             
