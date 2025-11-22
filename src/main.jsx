@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         path: "/explore",
         element: <ExploreArtworks />,
         hydrateFallbackElement: <Loading />,
-        loader: () => fetch("http://localhost:5000/artworks"),
+        loader: () => fetch("http://localhost:5000/artworks-explore"),
       },
 
       { path: "/artworks/id", element: <ArtworkDetails /> },
