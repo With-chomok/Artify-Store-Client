@@ -72,7 +72,7 @@ const AddArtwork = () => {
   return (
     <section className="min-h-screen  py-10 px-4">
       <div className="max-w-3xl mx-auto p-8 rounded-2xl add-artwork-form  shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center"><Typewriter
+        <h2 className="md:text-4xl text-2xl font-bold mb-6 text-center"><Typewriter
                   words={[
                     "Add New Artwork.",
                   ]}

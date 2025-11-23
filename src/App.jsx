@@ -10,7 +10,7 @@ const Home = () => {
   // const [artworks, setArtworks] = useState([]);
   //  Fetch 6 most recent artworks from MongoDB
   const artworks = useLoaderData();
-
+  
   return (
     <div className=" text-gray-800 m-2 md:m-10 space-y-20 ">
       {/* ======== Banner / Slider ========= */}
@@ -18,7 +18,7 @@ const Home = () => {
 
       {/* ======== Featured Artworks ========== */}
       <section className="md:py-16  md:px-4">
-        <h2 className="md:text-4xl text-3xl mb-10 text-white font-bold text-center">
+        <h2 className="md:text-4xl text-2xl mb-10 text-white font-bold text-center">
           <Fade duration={1000} delay={500} direction="right">
             <Slide>
               <h1>Featured Artworks.</h1>
@@ -34,20 +34,20 @@ const Home = () => {
             
           </p>
         ) : (
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {artworks.map((art) => (
-              <Fade duration={1000} delay={500}>
+              <Fade key={art._id} duration={1000} delay={500}>
                 <motion.div
-                  key={art._id}
+                   
                   className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition-all duration-700 hover:scale-105"
                   whileHover={{ scale: 1.02 }}>
                   <img
                     src={art.image}
                     alt={art.title}
-                    className="w-full h-56 object-cover"
+                    className="w-full h-56 object-cover rounded-lg"
                   />
                   <div className="p-4">
-                    <h3 className="font-semibold text-white text-2xl">
+                    <h3 className="font-semibold text-white text-xl md:text-2xl">
                       {art.title}
                     </h3>
                     <h4 className="font-semibold  text-white text-lg">
@@ -66,7 +66,7 @@ const Home = () => {
                     </Link>
                   </div>
                 </motion.div>
-              </Fade>
+            </Fade>
             ))}
           </div>
         )}

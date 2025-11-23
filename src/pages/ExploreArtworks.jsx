@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link, useLoaderData } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const ExploreArtworks = () => {
   const [searchText, setSearchText] = useState("");
@@ -28,10 +29,18 @@ const ExploreArtworks = () => {
   });
 
   return (
-    <div className="min-h-screen px-6 py-10 my-20 text-white">
+    <div className="min-h-screen px-6 py-10 md:my-20 text-white">
       <Fade duration={1000} delay={500}>
         <Slide>
-      <h1 className="md:text-4xl text-2xl text-white font-bold text-center mb-10">Explore Artworks</h1>
+      <h1 className="md:text-4xl text-2xl text-white font-bold text-center mb-10"><Typewriter
+                words={["Explore All Artworks"]}
+                loop={1}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={100}
+                delaySpeed={2000}
+              /></h1>
 
         </Slide>
       </Fade>
@@ -74,9 +83,9 @@ const ExploreArtworks = () => {
       {/* Artwork Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((art) => (
-      <Fade duration={1000} delay={500}>
+      <Fade key={art._id} duration={1000} delay={500}>
             <div
-              key={art._id}
+              
               className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl overflow-hidden hover:scale-105 transition duration-700">
               <img
                 src={art.image}
@@ -85,7 +94,7 @@ const ExploreArtworks = () => {
               />
 
               <div className="p-5">
-                <h2 className="text-xl font-bold">{art.title}</h2>
+                <h2 className="text-xl md:text-2xl font-bold">{art.title}</h2>
                 <p className="text-sm mt-1 opacity-80">Artist: {art.name}</p>
                 <p className="text-sm opacity-80">Category: {art.category}</p>
 

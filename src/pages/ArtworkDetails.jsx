@@ -23,8 +23,7 @@ const ArtworkDetails = () => {
 
         //  Fetch artist info based on artist email
         const artistRes = await fetch(
-          `http://localhost:5000/artworks?email=${data.userEmail}`
-        );
+          `http://localhost:5000/artworks?email=${data.userEmail}`);
         const artistData = await artistRes.json();
         setArtistInfo({
           name: data.userName,
@@ -88,11 +87,11 @@ const ArtworkDetails = () => {
   }
 
   if (!artwork) {
-    return <p className="text-center mt-10 text-red-500">Artwork not found!</p>;
+    return <p className="text-center font-semibold text-2xl mt-10 text-red-500">Artwork not found!</p>;
   }
 
   return (
-    <section className="min-h-screen  py-10 px-4">
+    <section className="min-h-screen py-10 px-4">
       <div className="max-w-5xl mx-auto add-artwork-form rounded-2xl shadow-lg overflow-hidden">
         {/* Artwork Image */}
         <img

@@ -17,10 +17,10 @@ const TopArtists = () => {
       <div className="flex flex-wrap justify-center gap-6">
         {["Tahia Rahman", "Rafiul Islam", "Aminul Haque", "Sajid Ahmed"].map(
           (name, i) => (
-            <Fade duration={1000} delay={500}>
+            <Fade key={i} duration={1000} delay={500}>
               <Slide direction="right">
                 <motion.div
-                  key={i}
+                  
                   className="bg-white/10 backdrop-blur-lg border border-white/20  rounded-xl shadow-xl transition hover:scale-105 p-6 w-60 text-center hover:shadow-lg duration-700"
                   whileHover={{ scale: 1.05 }}>
                   <img

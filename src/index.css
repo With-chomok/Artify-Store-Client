@@ -8,3 +8,12 @@
  
   font-style: normal;
 }
+:root[data-theme="light"] {
+  --nav-bg: #0f172a;
+  --page-bg: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --nav-bg: #020101;
+  --page-bg: #0f0f0f;
+}

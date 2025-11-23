@@ -18,7 +18,7 @@ const Banner = () => {
       >
         {/* Slide 1 */}
         <SwiperSlide>
-          <div className="relative w-full h-full">
+          <div className="w-full h-full">
             <img
               src="https://i.ibb.co.com/cXpHgJDJ/hq720.jpg"
               className="w-full h-full object-cover"

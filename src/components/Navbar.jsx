@@ -1,12 +1,13 @@
 import { use, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import '../../src/App.css'
+import "../../src/App.css";
+import ThemeToggle from "./ThemeToggle";
 const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
   const [showCard, setShowCard] = useState(false);
   return (
-    <nav className="bg-gray-900 text-white md:px-6 pr-2  py-2  flex justify-between items-center">
+    <nav className="bg-gray-900 text-white md:px-6 pr-2  py-2  flex justify-between items-center " style={{ backgroundColor: "var(--nav-bg)" }}>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
@@ -25,9 +26,11 @@ const Navbar = () => {
               />{" "}
             </svg>
           </div>
-          <ul id="nav"
+          <ul
+            id="nav"
             tabIndex="-1"
-            className="menu bg-pink-800 menu-sm dropdown-content  rounded-box z-1 mt-2 w-52 p-2 shadow">
+            className="menu absolute bg-white/10 backdrop-blur-lg border border-white/20 menu-sm rounded-box z-50 mt-1 
+             w-52 p-2 shadow top-12 left-0 dropdown-content  ">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/explore">Explore</NavLink>
             <NavLink to="/addart">Add Artwork</NavLink>
@@ -35,9 +38,10 @@ const Navbar = () => {
             <NavLink to="/myfavourite">My Favourite</NavLink>
           </ul>
         </div>
-        <Link to="/" className="md:text-2xl text-xl font-bold text-pink-400">
+        <Link to="/" className="md:text-2xl text-xl font-bold text-pink-400 mr-2">
           🎨 Artify
         </Link>
+          <ThemeToggle/>
       </div>
 
       <div className="flex justify-center items-center gap-3 ">

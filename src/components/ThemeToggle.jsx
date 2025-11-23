@@ -1,24 +1,21 @@
-import { useEffect, useState } from "react";
-import { BsSun, BsMoonStars } from "react-icons/bs";
+import { useState, useEffect } from "react";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light"
+  );
 
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="text-xl text-accent-red hover:scale-110 transition-transform"
+      className="px-2 py-1 text-white rounded-full bg-pink-500"
     >
-      {theme === "light" ? <BsMoonStars /> : <BsSun />}
+      {theme === "light" ? "🌙" : "☀️"}
     </button>
   );
 };

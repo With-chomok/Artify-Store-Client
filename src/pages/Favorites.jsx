@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Typewriter } from "react-simple-typewriter";
+import toast from "react-hot-toast";
 
 const Favorites = () => {
   const { user } = useContext(AuthContext);
@@ -8,51 +9,59 @@ const Favorites = () => {
 
   // Load favorites when page open
   useEffect(() => {
-    fetch(`http://localhost:5000/favorites?email=${user.email}`)
+    fetch(`http://localhost:5000/favorites?email=${user.email}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setFavorites(data));
   }, [user.email]);
-
+  
   // Remove favorite item
   const handleUnfavorite = (id) => {
     fetch(`http://localhost:5000/favorites/${id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json()
+        if(res.ok){
+          toast.success("Removed from favorite")
+        }
+      })
       .then(() => {
         setFavorites(favorites.filter((item) => item._id !== id));
       });
   };
 
   return (
-    <div className="min-h-screen px-4 md:px-5 lg:px-20 py-16 text-white">
-      <h1 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-         <Typewriter
-                  words={[
-                    "My Favorite Artworks.",
-                  ]}
-                  loop={1}
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={70}
-                  delaySpeed={1500}
-                />
+    <div className="min-h-screen px-4 md:px-5 lg:px-10 py-16 text-white">
+      <h1 className="md:text-4xl text-2xl font-bold mb-10 text-center">
+        <Typewriter
+          words={["My Favorite Artworks."]}
+          loop={1}
+          cursor
+          cursorStyle="|"
+          typeSpeed={70}
+          deleteSpeed={70}
+          delaySpeed={1500}
+        />
       </h1>
 
-      <div
-        className="grid grid-cols-2  md:grid-cols-3 gap-6 md:gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {favorites.map((item) => (
           <div
             key={item._id}
-            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl 
-              shadow-xl transition duration-700 hover:scale-105">
+            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition duration-700 hover:scale-105">
             <img
               src={item.image}
               className="w-full h-56 object-cover rounded-lg"
             />
 
-            <h2 className="text-xl font-bold mt-3">{item.title}</h2>
+            <h2 className="text-xl md:text-2xl font-bold mt-3">{item.title}</h2>
             <p className="opacity-80 text-sm">Artist: {item.artist}</p>
 
             <button
