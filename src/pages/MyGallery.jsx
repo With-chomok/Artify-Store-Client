@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { Typewriter } from "react-simple-typewriter";
+import { Fade } from "react-awesome-reveal";
 
 const MyGallery = () => {
   const { user } = useContext(AuthContext);
@@ -104,8 +105,9 @@ const MyGallery = () => {
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {myArtworks.map((item) => (
+          <Fade key={item?._id} duration={1000} delay={500}>
           <div
-            key={item?._id}
+            
             className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition hover:scale-105 duration-700">
             <img
               src={item?.image}
@@ -130,6 +132,8 @@ const MyGallery = () => {
               </button>
             </div>
           </div>
+
+          </Fade>
         ))}
       </div>
 

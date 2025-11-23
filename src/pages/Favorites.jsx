@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Typewriter } from "react-simple-typewriter";
 import toast from "react-hot-toast";
+import { Fade } from "react-awesome-reveal";
 
 const Favorites = () => {
   const { user } = useContext(AuthContext);
@@ -53,8 +54,9 @@ const Favorites = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {favorites.map((item) => (
+          <Fade key={item._id} duration={1000} delay={500}>
           <div
-            key={item._id}
+            
             className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition duration-700 hover:scale-105">
             <img
               src={item.image}
@@ -73,6 +75,8 @@ const Favorites = () => {
               Remove from Favorites
             </button>
           </div>
+
+          </Fade>
         ))}
       </div>
 

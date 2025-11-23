@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { Typewriter } from "react-simple-typewriter";
-
+import { Slide } from "react-awesome-reveal";
 
 const AddArtwork = () => {
-  const { user } = useContext(AuthContext); 
+  const { user } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     image: "",
@@ -30,7 +30,14 @@ const AddArtwork = () => {
     e.preventDefault();
 
     // simple validation
-    if (!formData.image || !formData.title || !formData.name || !formData.category || !formData.medium || !formData.description) {
+    if (
+      !formData.image ||
+      !formData.title ||
+      !formData.name ||
+      !formData.category ||
+      !formData.medium ||
+      !formData.description
+    ) {
       return toast.error("Please fill all required fields!");
     }
 
@@ -72,23 +79,24 @@ const AddArtwork = () => {
   return (
     <section className="min-h-screen  py-10 px-4">
       <div className="max-w-3xl mx-auto p-8 rounded-2xl add-artwork-form  shadow-lg">
-        <h2 className="md:text-4xl text-2xl font-bold mb-6 text-center"><Typewriter
-                  words={[
-                    "Add New Artwork.",
-                  ]}
-                  loop={1}
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={70}
-                  delaySpeed={1500}
-                /></h2>
+        <h2 className="md:text-4xl text-2xl font-bold mb-6 text-center">
+          <Typewriter
+            words={["Add New Artwork."]}
+            loop={1}
+            cursor
+            cursorStyle="|"
+            typeSpeed={70}
+            deleteSpeed={70}
+            delaySpeed={1500}
+          />
+        </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-            
           {/* Image URL */}
           <div>
-            <label className="block mb-2 font-medium">Image URL *</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Image URL *</label>
+            </Slide>
             <input
               type="text"
               name="image"
@@ -101,7 +109,9 @@ const AddArtwork = () => {
           </div>
           {/* Art. name */}
           <div>
-            <label className="block mb-2 font-medium">Artist Name *</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Artist Name *</label>
+            </Slide>
             <input
               type="text"
               name="name"
@@ -115,7 +125,9 @@ const AddArtwork = () => {
 
           {/* Title */}
           <div>
-            <label className="block mb-2 font-medium">Title *</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Title *</label>
+            </Slide>
             <input
               type="text"
               name="title"
@@ -129,14 +141,15 @@ const AddArtwork = () => {
 
           {/* Category */}
           <div>
-            <label className="block mb-2 font-medium">Category *</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Category *</label>
+            </Slide>
             <select
               name="category"
               value={formData.category}
               onChange={handleChange}
               className="w-full bg-purple-600 border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
-              required
-            >
+              required>
               <option value="">Select Category</option>
               <option value="Painting">Painting</option>
               <option value="Digital Art">Digital Art</option>
@@ -147,7 +160,9 @@ const AddArtwork = () => {
 
           {/* Medium / Tools */}
           <div>
-            <label className="block mb-2 font-medium">Medium / Tools *</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Medium / Tools *</label>
+            </Slide>
             <input
               type="text"
               name="medium"
@@ -161,7 +176,9 @@ const AddArtwork = () => {
 
           {/* Description */}
           <div>
-            <label className="block mb-2 font-medium">Description *</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Description *</label>
+            </Slide>
             <textarea
               name="description"
               value={formData.description}
@@ -169,13 +186,16 @@ const AddArtwork = () => {
               className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
               rows="4"
               placeholder="Describe your artwork..."
-              required
-            ></textarea>
+              required></textarea>
           </div>
 
           {/* Dimensions (optional) */}
           <div>
-            <label className="block mb-2 font-medium">Dimensions (optional)</label>
+            <Slide>
+              <label className="block mb-2 font-medium">
+                Dimensions (optional)
+              </label>
+            </Slide>
             <input
               type="text"
               name="dimensions"
@@ -188,7 +208,9 @@ const AddArtwork = () => {
 
           {/* Price (optional) */}
           <div>
-            <label className="block mb-2 font-medium">Price (optional)</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Price (optional)</label>
+            </Slide>
             <input
               type="number"
               name="price"
@@ -201,13 +223,14 @@ const AddArtwork = () => {
 
           {/* Visibility */}
           <div>
-            <label className="block mb-2 font-medium">Visibility</label>
+            <Slide>
+              <label className="block mb-2 font-medium">Visibility</label>
+            </Slide>
             <select
               name="visibility"
               value={formData.visibility}
               onChange={handleChange}
-              className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
-            >
+              className="bg-purple-600 w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300">
               <option value="Public">Public</option>
               <option value="Private">Private</option>
             </select>
@@ -216,7 +239,9 @@ const AddArtwork = () => {
           {/* User Info */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block mb-2 font-medium">User Name</label>
+              <Slide>
+                <label className="block mb-2 font-medium">User Name</label>
+              </Slide>
               <input
                 type="text"
                 value={user?.displayName || ""}
@@ -225,7 +250,9 @@ const AddArtwork = () => {
               />
             </div>
             <div>
-              <label className="block mb-2 font-medium">User Email</label>
+              <Slide>
+                <label className="block mb-2 font-medium">User Email</label>
+              </Slide>
               <input
                 type="email"
                 value={user?.email || ""}
@@ -238,8 +265,7 @@ const AddArtwork = () => {
           {/* Submit Button */}
           <button
             type="submit"
-          className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:opacity-90 "
-          >
+            className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:opacity-90 ">
             Add Artwork
           </button>
         </form>
