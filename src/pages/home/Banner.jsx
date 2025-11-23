@@ -4,6 +4,7 @@ import "swiper/css";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import { Typewriter } from "react-simple-typewriter";
+import { Slide } from "react-awesome-reveal";
 
 const Banner = () => {
   return (
@@ -24,15 +25,9 @@ const Banner = () => {
             />
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
               <h2 className="md:text-4xl text-2xl font-bold mb-3 text-center">
-                <Typewriter
-                  words={["Discover Masterpieces"]}
-                  loop={0}
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={70}
-                  delaySpeed={1500}
-                />
+                <Slide>
+                  <h2>Discover Masterpieces</h2>
+                </Slide>
               </h2>
               <p className="text-center">
                 <Typewriter
@@ -60,15 +55,7 @@ const Banner = () => {
             />
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
               <h2 className="md:text-4xl text-2xl font-bold mb-3 text-center">
-                <Typewriter
-                  words={["Meet the Artists"]}
-                  loop={0}
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={70}
-                  delaySpeed={1500}
-                />
+                <Slide>Meet the Artists</Slide>
               </h2>
               <p className="text-center">
                 <Typewriter
@@ -96,15 +83,7 @@ const Banner = () => {
             />
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
               <h2 className="md:text-4xl text-2xl font-bold mb-3 text-center">
-                <Typewriter
-                  words={["Share Your Creativity"]}
-                  loop={0}
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={70}
-                  delaySpeed={1500}
-                />
+                <Slide>Share Your Creativity</Slide>
               </h2>
               <p className="text-center">
                 <Typewriter

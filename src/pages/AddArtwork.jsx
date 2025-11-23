@@ -76,7 +76,7 @@ const AddArtwork = () => {
                   words={[
                     "Add New Artwork.",
                   ]}
-                  loop={0}
+                  loop={1}
                   cursor
                   cursorStyle="|"
                   typeSpeed={70}

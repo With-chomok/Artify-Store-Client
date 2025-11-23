@@ -84,7 +84,7 @@ const MyGallery = () => {
                   words={[
                     "My Gallery.",
                   ]}
-                  loop={0}
+                  loop={1}
                   cursor
                   cursorStyle="|"
                   typeSpeed={70}
