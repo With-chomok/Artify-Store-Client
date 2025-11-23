@@ -31,7 +31,7 @@ const Home = () => {
             <Link to="/addart" className="underline font-semibold text-red-400">
               Click Here
             </Link>
-            .
+            
           </p>
         ) : (
           <div className="grid md:grid-cols-3 gap-6">

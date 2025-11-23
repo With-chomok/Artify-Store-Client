@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
 import Loading from "../components/Loading";
 
-
 const ArtworkDetails = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
@@ -19,7 +18,7 @@ const ArtworkDetails = () => {
       try {
         const res = await fetch(`http://localhost:5000/artworks/${id}`);
         const data = await res.json();
-  
+
         setArtwork(data);
 
         //  Fetch artist info based on artist email
@@ -68,7 +67,6 @@ const ArtworkDetails = () => {
       artist: artwork.userName,
     };
 
-
     try {
       const res = await fetch("http://localhost:5000/favorites", {
         method: "POST",
@@ -86,7 +84,7 @@ const ArtworkDetails = () => {
   };
 
   if (loading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   if (!artwork) {
@@ -115,14 +113,12 @@ const ArtworkDetails = () => {
             <div className="flex gap-3 mt-3 md:mt-0">
               <button
                 onClick={handleLike}
-                className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition"
-              >
+                className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition">
                 👍 Like ({artwork.likes || 0})
               </button>
               <button
                 onClick={handleFavorite}
-                className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
-              >
+                className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
                 ⭐ Add to Favorites
               </button>
             </div>
@@ -136,15 +132,26 @@ const ArtworkDetails = () => {
 
           {/* Artwork Info */}
           <div className="grid md:grid-cols-2 gap-4 ">
-            <p><strong>Category:</strong> {artwork.category}</p>
-            <p><strong>Medium:</strong> {artwork.medium}</p>
-            {artwork.dimensions && <p><strong>Dimensions:</strong> {artwork.dimensions}</p>}
-            {artwork.price && <p><strong>Price:</strong> ${artwork.price}</p>}
+            <p>
+              <strong>Category:</strong> {artwork.category}
+            </p>
+            <p>
+              <strong>Medium:</strong> {artwork.medium}
+            </p>
+            {artwork.dimensions && (
+              <p>
+                <strong>Dimensions:</strong> {artwork.dimensions}
+              </p>
+            )}
+            {artwork.price && (
+              <p>
+                <strong>Price:</strong> ${artwork.price}
+              </p>
+            )}
           </div>
 
           {/* Artist Info Section */}
-        
-          
+
           {artistInfo && (
             <div className="mt-10 border-t pt-6">
               <h3 className="text-xl font-semibold mb-4 ">Artist Info</h3>
@@ -156,7 +163,7 @@ const ArtworkDetails = () => {
                 />
                 <div>
                   <p className="font-semibold text-lg">{artistInfo.name}</p>
-                  <p >
+                  <p>
                     Total Artworks: <strong>{artistInfo.total}</strong>
                   </p>
                 </div>

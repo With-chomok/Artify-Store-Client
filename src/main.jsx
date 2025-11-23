@@ -80,7 +80,7 @@ const router = createBrowserRouter([
 
         element: (
           <PrivateRoute>
-            <ArtworkDetails />,
+            <ArtworkDetails />
           </PrivateRoute>
         ),
       },

@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
-
+import Err from "../assets/error.png"
 const Error = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center  dark:from-gray-800 dark:to-gray-900 space-y-4">
+      <img className=" w-70 md:w-[350px] rounded-3xl" src={Err} alt="" />
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Oops! Looks like you're lost.
       </h2>

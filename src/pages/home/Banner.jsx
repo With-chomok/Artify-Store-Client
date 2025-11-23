@@ -55,7 +55,7 @@ const Banner = () => {
             />
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
               <h2 className="md:text-4xl text-2xl font-bold mb-3 text-center">
-                <Slide>Meet the Artists</Slide>
+                <Slide direction="right">Meet the Artists</Slide>
               </h2>
               <p className="text-center">
                 <Typewriter

@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="w-full bg-[#0f0a2a] text-white pt-10 pb-5 mt-20">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 items-center">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 ">
         {/* Website Info */}
         <div>
           <h2 className="text-4xl font-bold">🎨 Artify</h2>
