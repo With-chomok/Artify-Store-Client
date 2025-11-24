@@ -10,27 +10,33 @@ const Favorites = () => {
 
   // Load favorites when page open
   useEffect(() => {
-    fetch(`http://localhost:5000/favorites?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/favorites?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setFavorites(data));
   }, [user.email]);
-  
+
   // Remove favorite item
   const handleUnfavorite = (id) => {
-    fetch(`http://localhost:5000/favorites/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/favorites/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => {
-        res.json()
-        if(res.ok){
-          toast.success("Removed from favorite")
+        res.json();
+        if (res.ok) {
+          toast.success("Removed from favorite");
         }
       })
       .then(() => {
@@ -55,27 +61,26 @@ const Favorites = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {favorites.map((item) => (
           <Fade key={item._id} duration={1000} delay={500}>
-          <div
-            
-            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition duration-700 hover:scale-105">
-            <img
-              src={item.image}
-              className="w-full h-56 object-cover rounded-lg"
-            />
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition duration-700 hover:scale-105">
+              <img
+                src={item.image}
+                className="w-full h-56 object-cover rounded-lg"
+              />
 
-            <h2 className="text-xl md:text-2xl font-bold mt-3">{item.title}</h2>
-            <p className="opacity-80 text-sm">Artist: {item.artist}</p>
+              <h2 className="text-xl md:text-2xl font-bold mt-3">
+                {item.title}
+              </h2>
+              <p className="opacity-80 text-sm">Artist: {item.artist}</p>
 
-            <button
-              onClick={() => handleUnfavorite(item._id)}
-              className="w-full bg-gradient-to-r 
+              <button
+                onClick={() => handleUnfavorite(item._id)}
+                className="w-full bg-gradient-to-r 
                 from-red-900 via-red-500 to-purple-600 
                 text-white font-semibold px-4 py-2 rounded-full 
                 shadow-md hover:opacity-90 transition mt-4">
-              Remove from Favorites
-            </button>
-          </div>
-
+                Remove from Favorites
+              </button>
+            </div>
           </Fade>
         ))}
       </div>

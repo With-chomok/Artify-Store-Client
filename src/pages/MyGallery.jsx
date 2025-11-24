@@ -13,11 +13,14 @@ const MyGallery = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:5000/artworks?email=${user.email}`,{
-          headers:{
-            authorization: `Bearer ${user.accessToken}`
-          } 
-        })
+    fetch(
+      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setMyArtworks(data))
       .catch(() => toast.error("Failed to load artworks"));
@@ -28,9 +31,12 @@ const MyGallery = () => {
     const confirmDel = confirm("Are you sure you want to delete?");
     if (!confirmDel) return;
 
-    const res = await fetch(`http://localhost:5000/artworks/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await res.json();
 
     if (data.deletedCount > 0) {
@@ -52,11 +58,14 @@ const MyGallery = () => {
       dimensions: form.dimensions.value,
     };
 
-    const res = await fetch(`http://localhost:5000/artworks/${selected._id}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(updated),
-    });
+    const res = await fetch(
+      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/${selected._id}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(updated),
+      }
+    );
 
     const data = await res.json();
 
@@ -77,7 +86,9 @@ const MyGallery = () => {
 
   // Reload for updating UI
   const reloadData = () => {
-    fetch(`http://localhost:5000/artworks?email=${user.email}`)
+    fetch(
+      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyArtworks(data));
   };
@@ -106,33 +117,32 @@ const MyGallery = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {myArtworks.map((item) => (
           <Fade key={item?._id} duration={1000} delay={500}>
-          <div
-            
-            className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition hover:scale-105 duration-700">
-            <img
-              src={item?.image}
-              alt={item?.title}
-              className="w-full h-56 object-cover rounded-lg"
-            />
+            <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition hover:scale-105 duration-700">
+              <img
+                src={item?.image}
+                alt={item?.title}
+                className="w-full h-56 object-cover rounded-lg"
+              />
 
-            <h2 className="text-xl md:text-2xl mt-3 font-bold">{item?.title}</h2>
-            <p className="text-sm opacity-80">{item?.category}</p>
+              <h2 className="text-xl md:text-2xl mt-3 font-bold">
+                {item?.title}
+              </h2>
+              <p className="text-sm opacity-80">{item?.category}</p>
 
-            <div className="flex justify-between mt-4">
-              <button
-                onClick={() => openUpdateModal(item)}
-                className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
-                Update
-              </button>
+              <div className="flex justify-between mt-4">
+                <button
+                  onClick={() => openUpdateModal(item)}
+                  className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
+                  Update
+                </button>
 
-              <button
-                onClick={() => handleDelete(item?._id)}
-                className="bg-gradient-to-r from-red-900 via-red-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
-                Delete
-              </button>
+                <button
+                  onClick={() => handleDelete(item?._id)}
+                  className="bg-gradient-to-r from-red-900 via-red-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-
           </Fade>
         ))}
       </div>

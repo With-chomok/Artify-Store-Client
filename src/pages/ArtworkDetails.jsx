@@ -16,14 +16,17 @@ const ArtworkDetails = () => {
   useEffect(() => {
     const fetchArtwork = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/artworks/${id}`);
+        const res = await fetch(
+          `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/${id}`
+        );
         const data = await res.json();
 
         setArtwork(data);
 
         //  Fetch artist info based on artist email
         const artistRes = await fetch(
-          `http://localhost:5000/artworks?email=${data.userEmail}`);
+          `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks?email=${data.userEmail}`
+        );
         const artistData = await artistRes.json();
         setArtistInfo({
           name: data.userName,
@@ -42,9 +45,12 @@ const ArtworkDetails = () => {
   // Handle Like Button
   const handleLike = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/artworks/like/${id}`, {
-        method: "PATCH",
-      });
+      const res = await fetch(
+        `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/like/${id}`,
+        {
+          method: "PATCH",
+        }
+      );
       const data = await res.json();
       if (data.modifiedCount > 0) {
         toast.success("You liked this artwork!");
@@ -67,11 +73,14 @@ const ArtworkDetails = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/favorites", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(favoriteData),
-      });
+      const res = await fetch(
+        "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/favorites",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(favoriteData),
+        }
+      );
       if (res.ok) {
         toast.success("Added to Favorites!");
       } else {
@@ -87,7 +96,11 @@ const ArtworkDetails = () => {
   }
 
   if (!artwork) {
-    return <p className="text-center font-semibold text-2xl mt-10 text-red-500">Artwork not found!</p>;
+    return (
+      <p className="text-center font-semibold text-2xl mt-10 text-red-500">
+        Artwork not found!
+      </p>
+    );
   }
 
   return (

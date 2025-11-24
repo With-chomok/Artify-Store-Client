@@ -29,7 +29,10 @@ const router = createBrowserRouter([
         index: true,
         element: <App />,
         hydrateFallbackElement: <Loading />,
-        loader: () => fetch("http://localhost:5000/artworks"),
+        loader: () =>
+          fetch(
+            "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks"
+          ),
       },
       {
         path: "/home",
@@ -43,7 +46,10 @@ const router = createBrowserRouter([
         path: "/explore",
         element: <ExploreArtworks />,
         hydrateFallbackElement: <Loading />,
-        loader: () => fetch("http://localhost:5000/artworks-explore"),
+        loader: () =>
+          fetch(
+            "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks-explore"
+          ),
       },
 
       { path: "/artworks/id", element: <ArtworkDetails /> },

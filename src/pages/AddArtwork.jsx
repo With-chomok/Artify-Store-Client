@@ -49,11 +49,14 @@ const AddArtwork = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/artworks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(artworkData),
-      });
+      const res = await fetch(
+        "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(artworkData),
+        }
+      );
 
       if (res.ok) {
         toast.success("Artwork added successfully!");
