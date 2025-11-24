@@ -11,7 +11,7 @@ const Favorites = () => {
   // Load favorites when page open
   useEffect(() => {
     fetch(
-      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/favorites?email=${user.email}`,
+      `https://assignment-artify-server.vercel.app/favorites?email=${user.email}`,
       {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
@@ -24,15 +24,12 @@ const Favorites = () => {
 
   // Remove favorite item
   const handleUnfavorite = (id) => {
-    fetch(
-      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/favorites/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${user.accessToken}`,
-        },
-      }
-    )
+    fetch(`https://assignment-artify-server.vercel.app/favorites/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
       .then((res) => {
         res.json();
         if (res.ok) {

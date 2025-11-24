@@ -17,7 +17,7 @@ const ArtworkDetails = () => {
     const fetchArtwork = async () => {
       try {
         const res = await fetch(
-          `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/${id}`
+          `https://assignment-artify-server.vercel.app/artworks/${id}`
         );
         const data = await res.json();
 
@@ -25,7 +25,7 @@ const ArtworkDetails = () => {
 
         //  Fetch artist info based on artist email
         const artistRes = await fetch(
-          `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks?email=${data.userEmail}`
+          `https://assignment-artify-server.vercel.app/artworks?email=${data.userEmail}`
         );
         const artistData = await artistRes.json();
         setArtistInfo({
@@ -46,7 +46,7 @@ const ArtworkDetails = () => {
   const handleLike = async () => {
     try {
       const res = await fetch(
-        `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/like/${id}`,
+        `https://assignment-artify-server.vercel.app/artworks/like/${id}`,
         {
           method: "PATCH",
         }
@@ -74,7 +74,7 @@ const ArtworkDetails = () => {
 
     try {
       const res = await fetch(
-        "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/favorites",
+        "https://assignment-artify-server.vercel.app/favorites",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

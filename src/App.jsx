@@ -1,10 +1,9 @@
-import { Link, useLoaderData } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Fade, Slide } from "react-awesome-reveal";
+import { Link, useLoaderData } from "react-router-dom";
+import Banner from "./pages/home/Banner";
 import CommunityHighlights from "./pages/home/CommunityHighlights";
 import TopArtists from "./pages/home/TopArtists";
-import Banner from "./pages/home/Banner";
-import { Typewriter } from "react-simple-typewriter";
-import { Fade, Slide } from "react-awesome-reveal";
 
 const Home = () => {
   // const [artworks, setArtworks] = useState([]);

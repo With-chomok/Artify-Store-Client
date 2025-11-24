@@ -30,9 +30,7 @@ const router = createBrowserRouter([
         element: <App />,
         hydrateFallbackElement: <Loading />,
         loader: () =>
-          fetch(
-            "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks"
-          ),
+          fetch("https://assignment-artify-server.vercel.app/artworks"),
       },
       {
         path: "/home",
@@ -47,9 +45,7 @@ const router = createBrowserRouter([
         element: <ExploreArtworks />,
         hydrateFallbackElement: <Loading />,
         loader: () =>
-          fetch(
-            "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks-explore"
-          ),
+          fetch("https://assignment-artify-server.vercel.app/artworks-explore"),
       },
 
       { path: "/artworks/id", element: <ArtworkDetails /> },

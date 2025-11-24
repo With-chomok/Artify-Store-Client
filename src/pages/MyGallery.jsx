@@ -14,7 +14,7 @@ const MyGallery = () => {
     if (!user?.email) return;
 
     fetch(
-      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks?email=${user.email}`,
+      `https://assignment-artify-server.vercel.app/artworks?email=${user.email}`,
       {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
@@ -32,7 +32,7 @@ const MyGallery = () => {
     if (!confirmDel) return;
 
     const res = await fetch(
-      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/${id}`,
+      `https://assignment-artify-server.vercel.app/artworks/${id}`,
       {
         method: "DELETE",
       }
@@ -59,7 +59,7 @@ const MyGallery = () => {
     };
 
     const res = await fetch(
-      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks/${selected._id}`,
+      `https://assignment-artify-server.vercel.app/artworks/${selected._id}`,
       {
         method: "PUT",
         headers: { "content-type": "application/json" },
@@ -87,7 +87,7 @@ const MyGallery = () => {
   // Reload for updating UI
   const reloadData = () => {
     fetch(
-      `https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks?email=${user.email}`
+      `https://assignment-artify-server.vercel.app/artworks?email=${user.email}`
     )
       .then((res) => res.json())
       .then((data) => setMyArtworks(data));

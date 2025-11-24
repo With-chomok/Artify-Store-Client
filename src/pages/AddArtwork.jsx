@@ -50,7 +50,7 @@ const AddArtwork = () => {
 
     try {
       const res = await fetch(
-        "https://assignment-artify-server-42rcaaolm-dipol-das-projects.vercel.app/artworks",
+        "https://assignment-artify-server.vercel.app/artworks",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
