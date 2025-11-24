@@ -94,7 +94,7 @@ const AddArtwork = () => {
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Image URL */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Image URL *</label>
             </Slide>
             <input
@@ -109,7 +109,7 @@ const AddArtwork = () => {
           </div>
           {/* Art. name */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Artist Name *</label>
             </Slide>
             <input
@@ -125,7 +125,7 @@ const AddArtwork = () => {
 
           {/* Title */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Title *</label>
             </Slide>
             <input
@@ -141,7 +141,7 @@ const AddArtwork = () => {
 
           {/* Category */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Category *</label>
             </Slide>
             <select
@@ -160,7 +160,7 @@ const AddArtwork = () => {
 
           {/* Medium / Tools */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Medium / Tools *</label>
             </Slide>
             <input
@@ -176,7 +176,7 @@ const AddArtwork = () => {
 
           {/* Description */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Description *</label>
             </Slide>
             <textarea
@@ -191,7 +191,7 @@ const AddArtwork = () => {
 
           {/* Dimensions (optional) */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">
                 Dimensions (optional)
               </label>
@@ -208,7 +208,7 @@ const AddArtwork = () => {
 
           {/* Price (optional) */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Price (optional)</label>
             </Slide>
             <input
@@ -223,7 +223,7 @@ const AddArtwork = () => {
 
           {/* Visibility */}
           <div>
-            <Slide>
+            <Slide direction="down">
               <label className="block mb-2 font-medium">Visibility</label>
             </Slide>
             <select
@@ -239,7 +239,7 @@ const AddArtwork = () => {
           {/* User Info */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <Slide>
+              <Slide direction="down">
                 <label className="block mb-2 font-medium">User Name</label>
               </Slide>
               <input
@@ -250,7 +250,7 @@ const AddArtwork = () => {
               />
             </div>
             <div>
-              <Slide>
+              <Slide direction="down">
                 <label className="block mb-2 font-medium">User Email</label>
               </Slide>
               <input
