@@ -13,18 +13,16 @@ const MyGallery = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(
-      `https://assignment-artify-server.vercel.app/artworks`,
-      {
-        headers: {
-          authorization: `Bearer ${user.accessToken}`,
-        },
-      }
-    )
+    fetch(`https://assignment-artify-server.vercel.app/artworks`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setMyGallery(data)})
+        setMyGallery(data);
+      })
       .catch(() => toast.error("Failed to load artworks"));
   }, [user]);
 
@@ -97,7 +95,7 @@ const MyGallery = () => {
 
   return (
     <div className="min-h-screen px-6 py-10 text-white">
-      <h1 className="md:text-4xl text-2xl font-bold text-center mb-8">
+      <h1 className="md:text-2xl text-xl font-bold text-center mb-8">
         <Typewriter
           words={["My Gallery."]}
           loop={1}

@@ -3,7 +3,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 const Testimonials = () => {
   return (
     <section className="community-background rounded-2xl md:mx-5 py-10 md:py-16 ">
-      <h2 className="md:text-4xl text-2xl text-white font-bold text-center mb-10">
+      <h2 className="md:text-2xl text-xl text-white font-bold text-center mb-10">
         <Fade duration={1000} delay={500}>
           <Slide>
             <h1>What Artists Says</h1>

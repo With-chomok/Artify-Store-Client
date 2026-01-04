@@ -5,7 +5,7 @@ import { Typewriter } from "react-simple-typewriter";
 const CommunityHighlights = () => {
   return (
     <section className="md:py-20 py-10 px-5 md:mx-5 rounded-2xl md:px-20 text-center community-background">
-      <h2 className="md:text-4xl text-2xl text-white font-bold mb-8">
+      <h2 className="md:text-2xl text-xl text-white font-bold mb-8">
         <Fade duration={1000} delay={500} direction="right">
           <Slide>Community Highlights</Slide>
         </Fade>

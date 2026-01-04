@@ -32,7 +32,7 @@ const ExploreArtworks = () => {
     <div className="min-h-screen px-6 py-10 md:my-20 text-white">
       <Fade duration={1000} delay={500}>
         <Slide>
-          <h1 className="md:text-4xl text-2xl text-white font-bold text-center mb-10">
+          <h1 className="md:text-2xl text-xl text-white font-bold text-center mb-10">
             <Typewriter
               words={["Explore All Artworks"]}
               loop={1}

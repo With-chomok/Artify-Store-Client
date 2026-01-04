@@ -20,11 +20,11 @@ const Home = () => {
 
       {/* ======== Featured Artworks ========== */}
 
-      <section className="rounded-2xl">
-        <h2 className="md:text-4xl text-2xl mb-10 text-white font-bold text-center">
+      <section className="rounded-2xl ">
+        <h2 className="md:text-2xl text-xl mb-10 text-white font-bold text-center">
           <Fade duration={1000} delay={500} direction="right">
             <Slide>
-              <h1>Featured Artworks.</h1>
+              <h1 className="inline-block">Featured Artworks. </h1>
             </Slide>
           </Fade>
         </h2>
@@ -103,7 +103,7 @@ const Home = () => {
       <section className="bg-gradient-to-r from-blue-100 to-pink-100 text-center py-10 md:py-16 community-background md:mx-5 rounded-2xl">
         <Fade duration={1000} delay={500}>
           <Slide>
-            <h3 className="text-4xl text-white font-bold mb-10">
+            <h3 className="md:text-2xl text-xl text-white font-bold mb-10">
               Ready to showcase your creativity?.
             </h3>
           </Slide>

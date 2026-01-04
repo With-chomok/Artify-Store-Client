@@ -5,7 +5,7 @@ const FAQ = () => {
     <section className="community-background rounded-2xl md:mx-5 py-10 md:py-16 text-white">
       <Fade duration={1000} delay={500}>
         <Slide>
-          <h2 className="text-3xl text-center font-bold mb-10">FAQ</h2>
+          <h2 className="md:text-2xl text-xl text-center font-bold mb-10">FAQ</h2>
         </Slide>
       </Fade>
 

@@ -44,7 +44,7 @@ const Favorites = () => {
 
   return (
     <div className="min-h-screen px-4 md:px-5 lg:px-10 py-16 text-white">
-      <h1 className="md:text-4xl text-2xl font-bold mb-10 text-center">
+      <h1 className="md:text-2xl text-xl font-bold mb-10 text-center">
         <Typewriter
           words={["My Favorite Artworks."]}
           loop={1}
