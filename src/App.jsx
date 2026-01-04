@@ -5,6 +5,7 @@ import Banner from "./pages/home/Banner";
 import CommunityHighlights from "./pages/home/CommunityHighlights";
 import TopArtists from "./pages/home/TopArtists";
 import Categories from "./pages/home/Catagories";
+import Testimonials from "./pages/home/Testimonials";
 
 const Home = () => {
   // const [artworks, setArtworks] = useState([]);
@@ -74,6 +75,9 @@ const Home = () => {
 
       <Categories></Categories>
 
+
+        { /* ====== Testimonials ====== */}
+        <Testimonials></Testimonials>
       {/* ====== Top Artists of the Week ====== */}
       <TopArtists></TopArtists>
 
