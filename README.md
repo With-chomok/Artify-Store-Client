@@ -1,7 +1,7 @@
 # 🎨 Artify –<br/> Creative Artwork Sharing Platform
 A responsive art gallery platform where users can explore artworks, upload their creations, manage galleries, save favourites, and interact with a modern UI.
 ## 🌐 Live Site URL
- https://your-live-site-url.com
+https://artify-client-side.vercel.app/
 
 
 
