@@ -65,10 +65,10 @@ const Favorites = () => {
                 className="w-full h-56 object-cover rounded-lg"
               />
 
-              <h2 className="text-xl md:text-2xl font-bold mt-3">
+              <h4 className="text-md font-bold mt-3">
                 {item.title}
-              </h2>
-              <p className="opacity-80 text-sm">Artist: {item.artist}</p>
+              </h4>
+              <p className="opacity-80 text-xs">Artist: {item.artist}</p>
 
               <button
                 onClick={() => handleUnfavorite(item._id)}
