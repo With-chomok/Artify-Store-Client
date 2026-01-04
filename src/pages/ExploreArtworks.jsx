@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Link, useLoaderData } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
-
+import { motion } from "framer-motion";
 const ExploreArtworks = () => {
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -32,32 +32,32 @@ const ExploreArtworks = () => {
     <div className="min-h-screen px-6 py-10 md:my-20 text-white">
       <Fade duration={1000} delay={500}>
         <Slide>
-      <h1 className="md:text-4xl text-2xl text-white font-bold text-center mb-10"><Typewriter
-                words={["Explore All Artworks"]}
-                loop={1}
-                cursor
-                cursorStyle="|"
-                typeSpeed={100}
-                deleteSpeed={100}
-                delaySpeed={2000}
-              /></h1>
-
+          <h1 className="md:text-4xl text-2xl text-white font-bold text-center mb-10">
+            <Typewriter
+              words={["Explore All Artworks"]}
+              loop={1}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={100}
+              delaySpeed={2000}
+            />
+          </h1>
         </Slide>
       </Fade>
       {/* Search Input */}
-    <Slide direction="right">
-      <div className="max-w-xl mx-auto mb-10">
-        <input
-          name="search"
-          type="text"
-          placeholder="Search by title or artist..."
-          className="bg-[#15094b] w-full p-3 rounded-xl text-white"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-      </div>
-
-    </Slide>
+      <Slide direction="right">
+        <div className="max-w-xl mx-auto mb-10">
+          <input
+            name="search"
+            type="text"
+            placeholder="Search by title or artist..."
+            className="bg-[#15094b] w-full p-3 rounded-xl text-white"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
+      </Slide>
       {/* Category Filter */}
       <Fade duration={1000} delay={500}>
         <Slide>
@@ -81,37 +81,53 @@ const ExploreArtworks = () => {
       </Fade>
 
       {/* Artwork Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {filtered.map((art) => (
-      <Fade key={art._id} duration={1000} delay={500}>
-            <div
-              
-              className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl overflow-hidden hover:scale-105 transition duration-700">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {filtered.map((art) => (
+          <Fade key={art._id} duration={1000} delay={500}>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="bg-white/10 backdrop-blur-lg p-4 rounded-xl shadow-md overflow-hidden hover:scale-105 transition duration-700">
+              {/* Image */}
               <img
                 src={art.image}
                 alt={art.title}
-                className="h-56 w-full object-cover"
+                className="w-full h-56 object-cover"
               />
 
-              <div className="p-5">
-                <h2 className="text-xl md:text-2xl font-bold">{art.title}</h2>
-                <p className="text-sm mt-1 opacity-80">Artist: {art.name}</p>
-                <p className="text-sm opacity-80">Category: {art.category}</p>
+              {/* Content */}
+              <div className="p-4 flex flex-col flex-grow">
+                {/* Title */}
+                <h3 className="font-semibold text-white text-lg">
+                  {art.title}
+                </h3>
 
-                {/* Likes */}
-                <p className="mt-2">👍 {art.likes} likes</p>
+                {/* Short Description */}
+                <p className="text-sm text-gray-200 mt-1 line-clamp-2">
+                  {art.description}
+                </p>
 
-                {/* View Details */}
-                <Link to={`/artworks/${art._id}`}>
-                  <button className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 mt-2 transition">
-                    View Details →
-                  </button>
+                {/* Meta Info */}
+                <div className="mt-3 text-xs text-gray-300 space-y-1 mb-2">
+                  <p>🎨 Category: {art.category}</p>
+                  <p>💰 Price: ${art.price} </p>
+
+                  <p>❤️ Likes: {art.likes}</p>
+                </div>
+
+                {/* Button (fixed bottom) */}
+                <Link
+                  to={`/artworks/${art._id}`}
+                  className="mt-auto w-full text-center
+                           bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600
+                           text-white font-semibold px-4 py-2 rounded-xl shadow-md
+                           hover:opacity-90 transition">
+                  View Details →
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </Fade>
-          ))}
-        </div>
+        ))}
+      </div>
 
       {filtered.length === 0 && (
         <p className="text-center text-gray-300 mt-10 font-bold text-lg">

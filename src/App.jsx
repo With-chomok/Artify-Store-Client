@@ -36,33 +36,46 @@ const Home = () => {
             </Link>
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {artworks.map((art) => (
               <Fade key={art._id} duration={1000} delay={500}>
                 <motion.div
-                  className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition-all duration-700 hover:scale-105"
-                  whileHover={{ scale: 1.02 }}>
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white/10 backdrop-blur-lg p-4 rounded-xl shadow-md overflow-hidden hover:scale-105 transition duration-700">
+                  {/* Image */}
                   <img
                     src={art.image}
                     alt={art.title}
-                    className="w-full h-56 object-cover rounded-lg"
+                    className="w-full h-56 object-cover"
                   />
-                  <div className="p-4">
-                    <h3 className="font-semibold text-white text-xl md:text-2xl">
+
+                  {/* Content */}
+                  <div className="p-4 flex flex-col flex-grow">
+                    {/* Title */}
+                    <h3 className="font-semibold text-white text-lg">
                       {art.title}
                     </h3>
-                    <h4 className="font-semibold  text-white text-lg">
-                      {art.name}
-                    </h4>
-                    <p className="text-sm text-white">
-                      by <span className="font-medium ">{art.artist}</span>
+
+                    {/* Short Description */}
+                    <p className="text-sm text-gray-200 mt-1 line-clamp-2">
+                      {art.description}
                     </p>
-                    <p className="text-xs text-white mb-4 mt-1">
-                      {art.category}
-                    </p>
+
+                    {/* Meta Info */}
+                    <div className="mt-3 text-xs text-gray-300 space-y-1 mb-2">
+                      <p>🎨 Category: {art.category}</p>
+                      <p>💰 Price: ${art.price} </p>
+
+                       <p>❤️ Likes: {art.likes}</p>
+                    </div>
+
+                    {/* Button (fixed bottom) */}
                     <Link
                       to={`/artworks/${art._id}`}
-                      className="btn border-none w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-md hover:opacity-90 transition">
+                      className="mt-auto w-full text-center
+                           bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600
+                           text-white font-semibold px-4 py-2 rounded-xl shadow-md
+                           hover:opacity-90 transition">
                       View Details →
                     </Link>
                   </div>
@@ -76,19 +89,16 @@ const Home = () => {
 
       <Categories></Categories>
 
-
-        { /* ====== Testimonials ====== */}
-        <Testimonials></Testimonials>
+      {/* ====== Testimonials ====== */}
+      <Testimonials></Testimonials>
       {/* ====== Top Artists of the Week ====== */}
       <TopArtists></TopArtists>
 
       {/* ====== Community Highlights ======= */}
 
       <CommunityHighlights></CommunityHighlights>
-        {
-        /* ====== FAQ Section ====== */
-        }
-        <FAQ></FAQ>
+      {/* ====== FAQ Section ====== */}
+      <FAQ></FAQ>
       {/* ====== Call to Action ========= */}
       <section className="bg-gradient-to-r from-blue-100 to-pink-100 text-center py-10 md:py-16 community-background md:mx-5 rounded-2xl">
         <Fade duration={1000} delay={500}>
