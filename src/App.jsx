@@ -35,7 +35,7 @@ const Home = () => {
             
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {artworks.map((art) => (
               <Fade key={art._id} duration={1000} delay={500}>
                 <motion.div
