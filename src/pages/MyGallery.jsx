@@ -8,13 +8,13 @@ const MyGallery = () => {
   const { user } = useContext(AuthContext);
   const [myArtworks, setMyArtworks] = useState([]);
   const [selected, setSelected] = useState(null);
-
+  const [mygallery, setMyGallery] = useState([]);
   // Load My Artworks
   useEffect(() => {
     if (!user?.email) return;
 
     fetch(
-      `https://assignment-artify-server.vercel.app/artworks?email=${user.email}`,
+      `https://assignment-artify-server.vercel.app/artworks`,
       {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
@@ -22,7 +22,9 @@ const MyGallery = () => {
       }
     )
       .then((res) => res.json())
-      .then((data) => setMyArtworks(data))
+      .then((data) => {
+        console.log(data);
+        setMyGallery(data)})
       .catch(() => toast.error("Failed to load artworks"));
   }, [user]);
 
@@ -107,7 +109,7 @@ const MyGallery = () => {
         />
       </h1>
 
-      {myArtworks.length === 0 && (
+      {mygallery.length === 0 && (
         <p className="text-center text-xl font-bold opacity-80">
           You haven’t added any artworks yet.
         </p>
@@ -115,7 +117,7 @@ const MyGallery = () => {
 
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {myArtworks.map((item) => (
+        {mygallery.map((item) => (
           <Fade key={item?._id} duration={1000} delay={500}>
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition hover:scale-105 duration-700">
               <img

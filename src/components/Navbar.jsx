@@ -7,7 +7,9 @@ const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
   const [showCard, setShowCard] = useState(false);
   return (
-    <nav className="bg-gray-900 text-white md:px-6 pr-2  py-2  flex justify-between items-center " style={{ backgroundColor: "var(--nav-bg)" }}>
+    <nav
+      className="bg-gray-900 text-white md:px-6 pr-2  py-2  flex justify-around items-center "
+      style={{ backgroundColor: "var(--nav-bg)" }}>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
@@ -34,14 +36,20 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/explore">Explore</NavLink>
             <NavLink to="/addart">Add Artwork</NavLink>
-            <NavLink to="/mygallery">My Gallery</NavLink>
-            <NavLink to="/myfavourite">My Favourite</NavLink>
+            {user && (
+              <>
+                <NavLink to="/mygallery">My Gallery</NavLink>
+                <NavLink to="/myfavourite">My Favourite</NavLink>
+              </>
+            )}
           </ul>
         </div>
-        <Link to="/" className="md:text-2xl text-xl font-bold text-pink-400 mr-2">
+        <Link
+          to="/"
+          className="md:text-2xl text-xl font-bold text-pink-400 mr-2">
           🎨 Artify
         </Link>
-          <ThemeToggle/>
+        <ThemeToggle />
       </div>
 
       <div className="flex justify-center items-center gap-3 ">
@@ -49,11 +57,16 @@ const Navbar = () => {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/explore">Explore</NavLink>
           <NavLink to="/addart">Add Artwork</NavLink>
-
           <NavLink to="/mygallery">My Gallery</NavLink>
-          <NavLink to="/myfavourite">My Favourite</NavLink>
-        </div>
 
+          {user && (
+            <>
+              <NavLink to="/myfavourite">My Favourite</NavLink>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="navbar-end flex items-center gap-4">
         {!user ? (
           <>
             <Link
@@ -91,7 +104,7 @@ const Navbar = () => {
             )}
           </div>
         )}
-      </div>
+        </div>
     </nav>
   );
 };

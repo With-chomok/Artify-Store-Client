@@ -16,6 +16,8 @@ const Home = () => {
       <Banner></Banner>
 
       {/* ======== Featured Artworks ========== */}
+
+
       <section className="md:py-16  md:px-4">
         <h2 className="md:text-4xl text-2xl mb-10 text-white font-bold text-center">
           <Fade duration={1000} delay={500} direction="right">
@@ -33,7 +35,7 @@ const Home = () => {
             
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {artworks.map((art) => (
               <Fade key={art._id} duration={1000} delay={500}>
                 <motion.div
@@ -95,6 +97,7 @@ const Home = () => {
           </Slide>
         </Fade>
       </section>
+
     </div>
   );
 };
