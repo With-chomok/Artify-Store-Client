@@ -6,6 +6,7 @@ import CommunityHighlights from "./pages/home/CommunityHighlights";
 import TopArtists from "./pages/home/TopArtists";
 import Categories from "./pages/home/Catagories";
 import Testimonials from "./pages/home/Testimonials";
+import FAQ from "./pages/home/FAQ";
 
 const Home = () => {
   // const [artworks, setArtworks] = useState([]);
@@ -84,7 +85,10 @@ const Home = () => {
       {/* ====== Community Highlights ======= */}
 
       <CommunityHighlights></CommunityHighlights>
-
+        {
+        /* ====== FAQ Section ====== */
+        }
+        <FAQ></FAQ>
       {/* ====== Call to Action ========= */}
       <section className="bg-gradient-to-r from-blue-100 to-pink-100 text-center py-10 md:py-16 community-background md:mx-5 rounded-2xl">
         <Fade duration={1000} delay={500}>

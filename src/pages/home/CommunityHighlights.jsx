@@ -11,7 +11,7 @@ const CommunityHighlights = () => {
         </Fade>
       </h2>
       <Slide>
-        <Fade duration={1000} delay={500}>
+        <Fade duration={1000} delay={500} >
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition hover:scale-105 duration-700">
               <h3 className="font-bold  text-xl text-white mb-2">

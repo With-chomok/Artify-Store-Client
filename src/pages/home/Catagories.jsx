@@ -19,6 +19,8 @@ const Categories = () => {
           </Slide>
         </Fade>
       </h2>
+      <Fade duration={1000} delay={500} direction="right">
+        <Slide>
       <div className="grid grid-cols-2 md:grid-cols-3 mx-5 md:mx-15 lg:grid-cols-6 gap-4">
         {categories.map((cat) => (
           <div
@@ -28,6 +30,9 @@ const Categories = () => {
           </div>
         ))}
       </div>
+         
+        </Slide>
+      </Fade>
     </section>
   );
 };
