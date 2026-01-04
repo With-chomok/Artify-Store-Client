@@ -8,7 +8,7 @@ import { Slide } from "react-awesome-reveal";
 
 const Banner = () => {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden mt-10 md:mt-25">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}

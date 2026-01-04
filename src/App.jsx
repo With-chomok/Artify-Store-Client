@@ -4,21 +4,21 @@ import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./pages/home/Banner";
 import CommunityHighlights from "./pages/home/CommunityHighlights";
 import TopArtists from "./pages/home/TopArtists";
+import Categories from "./pages/home/Catagories";
 
 const Home = () => {
   // const [artworks, setArtworks] = useState([]);
   //  Fetch 6 most recent artworks from MongoDB
   const artworks = useLoaderData();
-  
+
   return (
-    <div className=" text-gray-800 m-2 md:m-10 space-y-20 ">
+    <div className=" text-gray-800 m-2 md:m-10 space-y-25">
       {/* ======== Banner / Slider ========= */}
       <Banner></Banner>
 
       {/* ======== Featured Artworks ========== */}
 
-
-      <section className="md:py-16  md:px-4">
+      <section className="rounded-2xl">
         <h2 className="md:text-4xl text-2xl mb-10 text-white font-bold text-center">
           <Fade duration={1000} delay={500} direction="right">
             <Slide>
@@ -32,14 +32,12 @@ const Home = () => {
             <Link to="/addart" className="underline font-semibold text-red-400">
               Click Here
             </Link>
-            
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {artworks.map((art) => (
               <Fade key={art._id} duration={1000} delay={500}>
                 <motion.div
-                   
                   className="bg-white/10 backdrop-blur-lg border border-white/20 p-4 rounded-xl shadow-xl transition-all duration-700 hover:scale-105"
                   whileHover={{ scale: 1.02 }}>
                   <img
@@ -67,11 +65,14 @@ const Home = () => {
                     </Link>
                   </div>
                 </motion.div>
-            </Fade>
+              </Fade>
             ))}
           </div>
         )}
       </section>
+      {/* ====== Art Categories ====== */}
+
+      <Categories></Categories>
 
       {/* ====== Top Artists of the Week ====== */}
       <TopArtists></TopArtists>
@@ -90,14 +91,13 @@ const Home = () => {
           </Slide>
           <Slide direction="right">
             <Link
-            to="/addart"
-            className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:opacity-90 transition">
-            Add Artwork
-          </Link>
+              to="/addart"
+              className="w-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:opacity-90 transition">
+              Add Artwork
+            </Link>
           </Slide>
         </Fade>
       </section>
-
     </div>
   );
 };
