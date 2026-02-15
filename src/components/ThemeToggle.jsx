@@ -13,7 +13,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="px-2 py-1 text-white rounded-full bg-pink-500"
+      className="px-1 py-0.5 text-white rounded-full bg-pink-500"
     >
       {theme === "light" ? "🌙" : "☀️"}
     </button>

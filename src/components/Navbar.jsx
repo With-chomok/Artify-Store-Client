@@ -12,7 +12,7 @@ const Navbar = () => {
       style={{ backgroundColor: "var(--nav-bg)" }}>
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
+          <div tabIndex={0} role="button" className="px-2 md:px-0 md:btn btn-ghost  lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-5"
@@ -46,8 +46,8 @@ const Navbar = () => {
         </div>
         <Link
           to="/"
-          className="md:text-2xl text-xl font-bold text-pink-400 mr-2">
-          🎨 Artify
+          className="md:text-2xl text-lg font-bold text-pink-400 mr-3">
+          🎨Artify
         </Link>
         <ThemeToggle />
       </div>
@@ -66,7 +66,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <div className="navbar-end flex items-center gap-4">
+      <div className="navbar-end flex items-center gap-1 md:gap-4">
         {!user ? (
           <>
             <Link
